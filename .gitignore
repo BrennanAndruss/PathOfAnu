@@ -1,0 +1,58 @@
+ty Generated Files ==========
+[Uu]ser[Ss]ettings/
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+MemoryCaptures/
+
+# ========== Unity Cache ==========
+*.pidb
+*.suo
+*.user
+*.userprefs
+*.csproj
+*.unityproj
+*.sln
+*.tmp
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.DS_Store
+
+# ========== OS Generated Files ==========
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ========== Visual Studio ==========
+.vs/
+.vscode/
+
+# ========== JetBrains Rider ==========
+.idea/
+*.sln.iml
+
+# ========== Unity Asset Store Tools ==========
+/Assets/AssetStoreTools*
+
+# ========== Build Artifacts ==========
+*.apk
+*.aab
+*.xcarchive
+*.ipa
+
+# ========== Custom: Ignore TMP examples ==========
+Assets/Plugins/Tools/TextMesh Pro/Examples & Extras/
+
+# ========== Custom: Ignore HeavyAssets folders or files anywhere ==========
+**/HeavyAssets/
+**/HeavyAssets
+
+# End of .gitignore
+ProjectSettings/EditorBuildSettings.asset
