@@ -1,4 +1,4 @@
-namespace Spells
+namespace Project.Spells.Scripts
 {
     public enum SpellType
     {

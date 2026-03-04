@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Spells;
 
-namespace Player
+namespace Project.Spells.Scripts
 {
     public class SpellDrawer : MonoBehaviour
     {
@@ -15,16 +14,17 @@ namespace Player
         [Header("Multi-Stroke Settings")] 
         [Tooltip("Time to wait for next stroke")] 
         [SerializeField] private float completionDelay = 0.8f;
-        private float _lastStrokeTime;
-        private bool _isWaitingForStrokes;
-
+        
+        // Stroke data
         private LineRenderer _currentStroke;
-        private int _index;
-
         private readonly List<GameObject> _strokeObjs = new();
         private readonly List<List<Vector3>> _activeSpellPoints = new();
+        private int _index;
         
-        public Action<SpellType> OnSpellRecognized;
+        private float _lastStrokeTime;
+        private bool _isWaitingForNextStroke;
+        
+        public Action<SpellType> OnDrawingComplete;
 
         private void Start()
         {
@@ -33,14 +33,20 @@ namespace Player
 
         private void Update()
         {
-            bool triggerHeld = OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger);
-            bool triggerDown = OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger);
-            bool triggerUp = OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger);
+            // Check if the spell is finished
+            if (_isWaitingForNextStroke && (Time.time - _lastStrokeTime > completionDelay))
+            {
+                _isWaitingForNextStroke = false;
+                FinalizeSpell();
+            }
+        }
 
+        public void HandleDraw(bool triggerDown, bool triggerHeld, bool triggerUp)
+        {
             if (triggerDown)
             {
                 Debug.Log("[SpellDrawer] Stroke start");
-                _isWaitingForStrokes = false;
+                _isWaitingForNextStroke = false;
                 StartNewStroke();
             }
 
@@ -54,13 +60,7 @@ namespace Player
                 Debug.Log("[SpellDrawer] Stroke end");
                 _currentStroke = null;
                 _lastStrokeTime = Time.time;
-                _isWaitingForStrokes = true;
-            }
-
-            // Check if the spell is finished
-            if (_isWaitingForStrokes && (Time.time - _lastStrokeTime > completionDelay))
-            {
-                FinalizeSpell();
+                _isWaitingForNextStroke = true;
             }
         }
 
@@ -105,16 +105,10 @@ namespace Player
 
         private void FinalizeSpell()
         {
-            _isWaitingForStrokes = false;
-
             // Send _activeSpellPoints to SpellRecognizer...
-            // SpellType result = SpellRecognizer.Recognize(_activeSpellPoints);
+            // SpellType spellType = SpellRecognizer.Recognize(_activeSpellPoints);
             SpellType spellType = SpellType.Prototype;
-
-            if (spellType != SpellType.Unknown)
-            {
-                OnSpellRecognized?.Invoke(spellType);
-            }
+            OnDrawingComplete?.Invoke(spellType);
 
             // Cleanup stroke objects
             foreach (var obj in _strokeObjs)
