@@ -1974,7 +1974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Meta.XR.BuildingBlocks::Meta.XR.BuildingBlocks.BuildingBlock
   blockId: 5817f7c0-f2a5-45f9-a5ca-64264e0166e8
-  instanceId: 7664abd3-e0f6-4c6e-934d-99f2b868d450
+  instanceId: 0e5309a2-f5c7-40c2-b3ae-ecd720266e61
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -3589,7 +3589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Meta.XR.BuildingBlocks::Meta.XR.BuildingBlocks.BuildingBlock
   blockId: e47682b9-c270-40b1-b16d-90b627a5ce1b
-  instanceId: 0a977266-a169-4668-82a2-f106ecaa1d4b
+  instanceId: 2090c416-af44-44f6-97fc-010e66d60ffe
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -7083,6 +7083,7 @@ GameObject:
   - component: {fileID: 2418567804903689282}
   - component: {fileID: 3562787986898399083}
   - component: {fileID: 8040172195080989204}
+  - component: {fileID: 4413598100591090367}
   - component: {fileID: 7359036532392301862}
   m_Layer: 0
   m_Name: WandContainer
@@ -7119,7 +7120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8280f4b752ee4052833176028df88937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Project.Spells.Scripts.WandManager
+  centerEyeAnchor: {fileID: 7535980958334334817}
   drawer: {fileID: 8040172195080989204}
+  recognizer: {fileID: 4413598100591090367}
   caster: {fileID: 7359036532392301862}
 --- !u!114 &8040172195080989204
 MonoBehaviour:
@@ -7136,6 +7139,18 @@ MonoBehaviour:
   tip: {fileID: 983733279523114151}
   strokeWidth: 0.01
   completionDelay: 1
+--- !u!114 &4413598100591090367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5814271946887387285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 735f73164e69420689009779a23a92f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Project.Spells.Scripts.SpellRecognizer
 --- !u!114 &7359036532392301862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8637,7 +8652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Meta.XR.BuildingBlocks::Meta.XR.BuildingBlocks.BuildingBlock
   blockId: 5817f7c0-f2a5-45f9-a5ca-64264e0166e8
-  instanceId: 7ac107e8-50e8-46e5-9912-df64bd963752
+  instanceId: 3f5d85ef-2bfb-48ff-b882-e0f9cfcb73aa
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -11334,7 +11349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Meta.XR.BuildingBlocks::Meta.XR.BuildingBlocks.BuildingBlock
   blockId: 81f55626-5fad-45e9-a1df-184f330da7ba
-  instanceId: 0f090cae-8423-4e35-bec4-124e3b97d326
+  instanceId: e3b183c5-f5f9-4cc7-a0d2-2843bc236945
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 2063f481-1b63-4eda-9ee8-a00df98536bc

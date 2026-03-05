@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Project.Spells.Scripts
@@ -12,50 +13,93 @@ namespace Project.Spells.Scripts
     public class WandManager : MonoBehaviour
     {
         private WandState _wandState = WandState.Idle;
+
+        // Projection variables
+        [SerializeField] private Transform centerEyeAnchor;
+        private Vector3 _projectionOrigin;
+        private Quaternion _projectionRotation;
         
         [Header("References")] 
         [SerializeField] private SpellDrawer drawer;
+        [SerializeField] private SpellRecognizer recognizer;
         [SerializeField] private SpellCaster caster;
 
         private void OnEnable()
         {
-            drawer.OnDrawingComplete += HandleSpellRecognized;
-            caster.OnCastComplete += HandleCastFinished;
+            drawer.OnSpellDrawn += HandleSpellDrawn;
+            recognizer.OnSpellRecognized += HandleSpellRecognized;
+            caster.OnSpellCasted += HandleSpellCasted;
         }
 
         private void OnDisable()
         {
-            drawer.OnDrawingComplete -= HandleSpellRecognized;
-            caster.OnCastComplete -= HandleCastFinished;
+            drawer.OnSpellDrawn -= HandleSpellDrawn;
+            recognizer.OnSpellRecognized -= HandleSpellRecognized;
+            caster.OnSpellCasted -= HandleSpellCasted;
         }
 
         private void Update()
         {
-            bool triggerDown = OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger);
-            bool triggerHeld = OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger);
-            bool triggerUp = OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger);
+            bool indexDown = OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger);
+            bool indexHeld = OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger);
+            bool indexUp = OVRInput.GetUp(OVRInput.Button.SecondaryIndexTrigger);
+
+            bool handTriggerDown = OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger);
 
             switch (_wandState)
             {
                 case WandState.Idle:
-                    if (triggerDown)
+                    if (indexDown)
                     {
+                        _projectionOrigin = centerEyeAnchor.position;
+                        _projectionRotation = centerEyeAnchor.rotation;
+                        
                         _wandState = WandState.Drawing;
-                        drawer.HandleDraw(true, triggerHeld, triggerUp);
+                        drawer.HandleDraw(true, indexHeld, indexUp);
                     }
                     break;
                 
                 case WandState.Drawing:
-                    drawer.HandleDraw(triggerDown, triggerHeld, triggerUp);
+                    // Continue drawing on indexHeld
+                    drawer.HandleDraw(indexDown, indexHeld, indexUp);
+                    
+                    // Finish spell with handTriggerDown
+                    if (handTriggerDown)
+                    {
+                        drawer.RequestFinalize();
+                    }
                     break;
                 
                 case WandState.Chambered:
-                    if (triggerDown)
+                    if (indexDown)
                     {
                         caster.CastSpell();
                     }
                     break;
             }
+        }
+
+        private void HandleSpellDrawn(List<RawSpellPoint> rawSpellPoints)
+        {
+            List<SpellPoint> projectedSpellPoints = new List<SpellPoint>();
+            
+            // Get inverse rotation to undo head tilt
+            Quaternion invRotation = Quaternion.Inverse(_projectionRotation);
+            
+            // Project points to player view
+            foreach (RawSpellPoint rawSpellPoint in rawSpellPoints)
+            {
+                // Get the vector from eye to point
+                Vector3 worldDelta = rawSpellPoint.Position - _projectionOrigin;
+                
+                // Rotate the vector into local view space
+                Vector3 localPoint = invRotation * worldDelta;
+                
+                // Project to the XY plane by ignoring depth from Z
+                projectedSpellPoints.Add(new SpellPoint(localPoint.x, localPoint.y, rawSpellPoint.StrokeId));
+            }
+            
+            recognizer.RecognizeSpell(projectedSpellPoints);
         }
 
         private void HandleSpellRecognized(SpellType spellType)
@@ -73,7 +117,7 @@ namespace Project.Spells.Scripts
             }
         }
 
-        private void HandleCastFinished()
+        private void HandleSpellCasted()
         {
             _wandState = WandState.Idle;
         }

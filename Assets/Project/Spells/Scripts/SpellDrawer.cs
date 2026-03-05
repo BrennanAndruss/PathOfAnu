@@ -9,44 +9,30 @@ namespace Project.Spells.Scripts
         [Header("Wand Properties")] 
         [SerializeField] private Transform tip;
         [SerializeField] [Range(0.01f, 0.1f)] private float strokeWidth = 0.01f;
-        private Color _strokeColor;
+        private Color _strokeColor = Color.purple;
         
         [Header("Multi-Stroke Settings")] 
         [Tooltip("Time to wait for next stroke")] 
         [SerializeField] private float completionDelay = 0.8f;
         
+        // Projection data
+        private Vector3 _startPosition;
+        private Vector3 _startForward;
+        
         // Stroke data
+        private int _numStrokes = 0;
         private LineRenderer _currentStroke;
         private readonly List<GameObject> _strokeObjs = new();
-        private readonly List<List<Vector3>> _activeSpellPoints = new();
+        private readonly List<RawSpellPoint> _allStrokePoints = new();
         private int _index;
         
-        private float _lastStrokeTime;
-        private bool _isWaitingForNextStroke;
-        
-        public Action<SpellType> OnDrawingComplete;
-
-        private void Start()
-        {
-            _strokeColor = Color.purple;
-        }
-
-        private void Update()
-        {
-            // Check if the spell is finished
-            if (_isWaitingForNextStroke && (Time.time - _lastStrokeTime > completionDelay))
-            {
-                _isWaitingForNextStroke = false;
-                FinalizeSpell();
-            }
-        }
+        public Action<List<RawSpellPoint>> OnSpellDrawn;
 
         public void HandleDraw(bool triggerDown, bool triggerHeld, bool triggerUp)
         {
             if (triggerDown)
             {
                 Debug.Log("[SpellDrawer] Stroke start");
-                _isWaitingForNextStroke = false;
                 StartNewStroke();
             }
 
@@ -58,10 +44,20 @@ namespace Project.Spells.Scripts
             if (triggerUp)
             {
                 Debug.Log("[SpellDrawer] Stroke end");
+                _numStrokes++;
                 _currentStroke = null;
-                _lastStrokeTime = Time.time;
-                _isWaitingForNextStroke = true;
             }
+        }
+
+        public void RequestFinalize()
+        {
+            // Ignore accidental clicks
+            if (_allStrokePoints.Count < 5)
+            {
+                return;
+            }
+
+            FinalizeSpell();
         }
 
         private void StartNewStroke()
@@ -78,37 +74,32 @@ namespace Project.Spells.Scripts
             // Track stroke objects for cleanup
             _strokeObjs.Add(strokeObj);
 
-            // Create a new list for this stroke's data
-            _activeSpellPoints.Add(new List<Vector3>());
-
             // Record the first point
             Vector3 point = tip.position;
             _currentStroke.positionCount = 1;
-            _currentStroke.SetPosition(0, point);
-            _activeSpellPoints[^1].Add(point); // Index new stroke from end
+            _currentStroke.SetPosition(0, point); 
         }
 
         private void UpdateCurrentStroke()
         {
             Vector3 point = tip.position;
             Vector3 lastPoint = _currentStroke.GetPosition(_index);
-
+            
             if (Vector3.Distance(lastPoint, point) > 0.01f)
             {
                 _index++;
                 _currentStroke.positionCount = _index + 1;
                 _currentStroke.SetPosition(_index, point);
 
-                _activeSpellPoints[^1].Add(point);
+                // Index _allStrokePoints from the end
+                _allStrokePoints.Add(new RawSpellPoint(point, _numStrokes));
             }
         }
 
         private void FinalizeSpell()
         {
-            // Send _activeSpellPoints to SpellRecognizer...
-            // SpellType spellType = SpellRecognizer.Recognize(_activeSpellPoints);
-            SpellType spellType = SpellType.Prototype;
-            OnDrawingComplete?.Invoke(spellType);
+            // Send RawStrokePoints to WandManager
+            OnSpellDrawn?.Invoke(_allStrokePoints);
 
             // Cleanup stroke objects
             foreach (var obj in _strokeObjs)
@@ -117,8 +108,9 @@ namespace Project.Spells.Scripts
             }
 
             // Reset state for the next spell
+            _numStrokes = 0;
             _strokeObjs.Clear();
-            _activeSpellPoints.Clear();
+            _allStrokePoints.Clear();
         }
     }
 }
