@@ -23,10 +23,10 @@ namespace Project.Spells.Scripts
         private int _numStrokes = 0;
         private LineRenderer _currentStroke;
         private readonly List<GameObject> _strokeObjs = new();
-        private readonly List<RawSpellPoint> _allStrokePoints = new();
+        private readonly List<WorldPoint> _allStrokePoints = new();
         private int _index;
         
-        public Action<List<RawSpellPoint>> OnSpellDrawn;
+        public Action<List<WorldPoint>> OnSpellDrawn;
 
         public void HandleDraw(bool triggerDown, bool triggerHeld, bool triggerUp)
         {
@@ -92,7 +92,7 @@ namespace Project.Spells.Scripts
                 _currentStroke.SetPosition(_index, point);
 
                 // Index _allStrokePoints from the end
-                _allStrokePoints.Add(new RawSpellPoint(point, _numStrokes));
+                _allStrokePoints.Add(new WorldPoint(point, _numStrokes));
             }
         }
 

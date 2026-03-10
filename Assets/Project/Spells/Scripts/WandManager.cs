@@ -79,24 +79,26 @@ namespace Project.Spells.Scripts
             }
         }
 
-        private void HandleSpellDrawn(List<RawSpellPoint> rawSpellPoints)
+        private void HandleSpellDrawn(List<WorldPoint> rawSpellPoints)
         {
-            List<SpellPoint> projectedSpellPoints = new List<SpellPoint>();
+            var projectedSpellPoints = new GesturePoint[rawSpellPoints.Count];
             
             // Get inverse rotation to undo head tilt
             Quaternion invRotation = Quaternion.Inverse(_projectionRotation);
             
             // Project points to player view
-            foreach (RawSpellPoint rawSpellPoint in rawSpellPoints)
+            for (int i = 0; i < rawSpellPoints.Count; i++)
             {
+                var rawPoint = rawSpellPoints[i];
+                
                 // Get the vector from eye to point
-                Vector3 worldDelta = rawSpellPoint.Position - _projectionOrigin;
+                Vector3 worldDelta = rawPoint.Position - _projectionOrigin;
                 
                 // Rotate the vector into local view space
                 Vector3 localPoint = invRotation * worldDelta;
                 
                 // Project to the XY plane by ignoring depth from Z
-                projectedSpellPoints.Add(new SpellPoint(localPoint.x, localPoint.y, rawSpellPoint.StrokeId));
+                projectedSpellPoints[i] = new GesturePoint(localPoint.x, localPoint.y, rawPoint.StrokeId);
             }
             
             recognizer.RecognizeSpell(projectedSpellPoints);

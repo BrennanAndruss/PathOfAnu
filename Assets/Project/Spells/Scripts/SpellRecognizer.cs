@@ -1,17 +1,21 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Project.Spells.Scripts
 {
     public class SpellRecognizer : MonoBehaviour
     {
+        [SerializeField] private SpellSettings spellSettings;
+        
         public Action<SpellType> OnSpellRecognized;
 
-        public void RecognizeSpell(List<SpellPoint> spellPoints)
+        public void RecognizeSpell(GesturePoint[] spellPoints)
         {
-            Debug.Log("[SpellRecognizer] " + spellPoints.Count + " spell points");
-            // Receive _activeSpellPoints
+            var candidate = new Gesture(spellPoints, "UserDrawing", spellSettings);
+            
+            Debug.Log("[SpellRecognizer] " + spellPoints.Length + " gesture points");
+            Debug.Log("[SpellRecognizer] " + candidate.Points.Length + " processed points");
+            
             SpellType spellType = SpellType.Prototype;
             OnSpellRecognized?.Invoke(spellType);
         }
