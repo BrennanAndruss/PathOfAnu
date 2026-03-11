@@ -14,7 +14,7 @@ namespace Project.Spells.Scripts
         private GameObject _chamberedSpell;
         private float _launchForce = 10f;
 
-        public Action OnCastComplete;
+        public Action OnSpellCasted;
         
         // temporary projectile for prototyping
         [Space(10)]
@@ -41,7 +41,7 @@ namespace Project.Spells.Scripts
             trajectory.enabled = false;
             _chamberedSpell = null;
 
-            OnCastComplete?.Invoke();
+            OnSpellCasted?.Invoke();
         }
     }
 }
