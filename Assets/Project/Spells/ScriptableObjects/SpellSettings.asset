@@ -15,4 +15,6 @@ MonoBehaviour:
   sampleResolution: 64
   maxIntCoordinates: 1024
   lutSize: 64
-  matchThreshold: 0.8
+  useEarlyAbandoning: 0
+  useLowerBounding: 1
+  matchThreshold: 0.2

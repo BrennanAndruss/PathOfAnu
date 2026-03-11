@@ -1974,7 +1974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Meta.XR.BuildingBlocks::Meta.XR.BuildingBlocks.BuildingBlock
   blockId: 5817f7c0-f2a5-45f9-a5ca-64264e0166e8
-  instanceId: 5b398832-a321-4524-89a3-301150983902
+  instanceId: 9bb1c644-7551-4381-8e75-5b0ba3204d71
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -3589,7 +3589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Meta.XR.BuildingBlocks::Meta.XR.BuildingBlocks.BuildingBlock
   blockId: e47682b9-c270-40b1-b16d-90b627a5ce1b
-  instanceId: c20f24f5-0dfc-4bfb-9325-088bcdd97ba7
+  instanceId: 22390efe-8190-443a-8a82-5972f318c13c
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -7121,9 +7121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Project.Spells.Scripts.WandManager
   centerEyeAnchor: {fileID: 7535980958334334817}
-  drawer: {fileID: 8040172195080989204}
-  recognizer: {fileID: 4413598100591090367}
-  caster: {fileID: 7359036532392301862}
+  CapturedProjectedPoints: []
 --- !u!114 &8040172195080989204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7138,7 +7136,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player.SpellDrawer
   tip: {fileID: 983733279523114151}
   strokeWidth: 0.01
-  completionDelay: 1
 --- !u!114 &4413598100591090367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7152,6 +7149,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Project.Spells.Scripts.SpellRecognizer
   spellSettings: {fileID: 11400000, guid: ab67e0d698dd6ee42b374c6120d488b4, type: 2}
+  spellLibrary:
+  - {fileID: 11400000, guid: 7472b3ca1eef3d743b9cd4c4b09b15e6, type: 2}
+  - {fileID: 11400000, guid: 3dbffa8152301c94ab0fe30562733a4e, type: 2}
 --- !u!114 &7359036532392301862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8653,7 +8653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Meta.XR.BuildingBlocks::Meta.XR.BuildingBlocks.BuildingBlock
   blockId: 5817f7c0-f2a5-45f9-a5ca-64264e0166e8
-  instanceId: e6233c1d-7fb9-40a1-bff4-1b462a8ab5f6
+  instanceId: 39db1e74-bc3b-4e35-9e9f-faf9aab1008e
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -11350,7 +11350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Meta.XR.BuildingBlocks::Meta.XR.BuildingBlocks.BuildingBlock
   blockId: 81f55626-5fad-45e9-a1df-184f330da7ba
-  instanceId: b0f164c0-d571-49bb-8d8c-1af809f78a53
+  instanceId: d6745317-97f3-4d54-94db-77ecc0bf3dee
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 2063f481-1b63-4eda-9ee8-a00df98536bc

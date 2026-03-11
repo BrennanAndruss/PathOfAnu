@@ -11,8 +11,12 @@ namespace Project.Spells.Scripts
         public int lutSize = 64;
         public float InvLutScaleFactor => 1.0f / (maxIntCoordinates / lutSize);
 
+        [Space(10f)] 
+        public bool useEarlyAbandoning = false; // Faster computation, less reliable drawing accuracy
+        public bool useLowerBounding = true;
+
         [Header("Recognition Parameters")] 
         [Range(0f, 1f)]
-        public float matchThreshold = 0.8f;
+        public float matchThreshold = 0.2f;
     }
 }
