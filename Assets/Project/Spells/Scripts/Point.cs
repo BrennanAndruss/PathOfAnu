@@ -21,6 +21,7 @@ namespace Project.Spells.Scripts
     /// Flattened 2D representation of the player's drawing.
     /// Used as the "Raw Input" for the $Q algorithm.
     /// </summary>
+    [System.Serializable]
     public struct GesturePoint
     {
         public Vector2 Pos;

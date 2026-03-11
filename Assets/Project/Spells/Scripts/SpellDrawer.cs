@@ -11,10 +11,6 @@ namespace Project.Spells.Scripts
         [SerializeField] [Range(0.01f, 0.1f)] private float strokeWidth = 0.01f;
         private Color _strokeColor = Color.purple;
         
-        [Header("Multi-Stroke Settings")] 
-        [Tooltip("Time to wait for next stroke")] 
-        [SerializeField] private float completionDelay = 0.8f;
-        
         // Projection data
         private Vector3 _startPosition;
         private Vector3 _startForward;
@@ -27,6 +23,9 @@ namespace Project.Spells.Scripts
         private int _index;
         
         public Action<List<WorldPoint>> OnSpellDrawn;
+#if UNITY_EDITOR
+        public Action<List<WorldPoint>> OnSpellTemplateDrawn;
+#endif
 
         public void HandleDraw(bool triggerDown, bool triggerHeld, bool triggerUp)
         {
@@ -47,17 +46,6 @@ namespace Project.Spells.Scripts
                 _numStrokes++;
                 _currentStroke = null;
             }
-        }
-
-        public void RequestFinalize()
-        {
-            // Ignore accidental clicks
-            if (_allStrokePoints.Count < 5)
-            {
-                return;
-            }
-
-            FinalizeSpell();
         }
 
         private void StartNewStroke()
@@ -95,12 +83,51 @@ namespace Project.Spells.Scripts
                 _allStrokePoints.Add(new WorldPoint(point, _numStrokes));
             }
         }
+        
+        public void RequestFinalize()
+        {
+            // Ignore accidental clicks
+            if (_allStrokePoints.Count < 5)
+            {
+                return;
+            }
+            
+            FinalizeSpell();
+        }
 
         private void FinalizeSpell()
         {
             // Send RawStrokePoints to WandManager
             OnSpellDrawn?.Invoke(_allStrokePoints);
+        }
+        
+#if UNITY_EDITOR
+        public void RequestRecord()
+        {
+            // Ignore accidental clicks
+            if (_allStrokePoints.Count < 5)
+            {
+                return;
+            }
 
+            RecordSpell();
+        }
+
+        private void RecordSpell()
+        {
+            // Highlight captured spell template
+            foreach (var obj in _strokeObjs)
+            {
+                LineRenderer stroke = obj.GetComponent<LineRenderer>();
+                stroke.startColor = stroke.endColor = Color.green;
+            }
+            
+            OnSpellTemplateDrawn?.Invoke(_allStrokePoints);
+        }
+#endif
+        
+        public void ClearSpell()
+        {
             // Cleanup stroke objects
             foreach (var obj in _strokeObjs)
             {
