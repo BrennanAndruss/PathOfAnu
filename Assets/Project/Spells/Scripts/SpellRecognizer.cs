@@ -31,8 +31,16 @@ namespace Project.Spells.Scripts
             // Use the $Q Recognizer
             RecognitionResult result = QRecognizer.Classify(candidate, _templates, spellSettings);
             Debug.Log("[SpellRecognizer] Result: " + result.Name);
-            
+
             SpellType spellType = SpellType.Prototype;
+            if (result.Name == "Circle")
+            {
+                spellType = SpellType.Water;
+            }
+            else if (result.Name == "Cross")
+            {
+                spellType = SpellType.Fire;
+            }
             OnSpellRecognized?.Invoke(spellType);
         }
     }

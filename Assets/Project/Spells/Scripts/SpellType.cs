@@ -4,5 +4,8 @@ namespace Project.Spells.Scripts
     {
         Unknown,
         Prototype,
+        Fire,
+        Water,
+        Electric,
     }
 }

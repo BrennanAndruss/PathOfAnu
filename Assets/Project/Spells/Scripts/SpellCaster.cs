@@ -5,8 +5,6 @@ namespace Project.Spells.Scripts
 {
     public class SpellCaster : MonoBehaviour
     {
-        [SerializeField] private SpellDrawer spellDrawer;
-        
         [Header("Wand Properties")] 
         [SerializeField] private Transform tip;
         [SerializeField] private LineRenderer trajectory;
@@ -17,14 +15,33 @@ namespace Project.Spells.Scripts
         public Action OnSpellCasted;
         
         // temporary projectile for prototyping
-        [Space(10)]
-        public GameObject prototypeSpellPrefab;
+        [Space(10)] 
+        public GameObject[] spellPrefabs;
+
+        private void Awake()
+        {
+            trajectory.enabled = false;
+        }
 
         public void PrepareSpell(SpellType spellType)
         {
-            spellDrawer.enabled = false;
+            GameObject spellPrefab = spellPrefabs[0];
+            if (spellType == SpellType.Water)
+            {
+                spellPrefab = spellPrefabs[0];
+            }
+            else if (spellType == SpellType.Fire)
+            {
+                spellPrefab = spellPrefabs[1];
+            }
+            else if (spellType == SpellType.Electric)
+            {
+                spellPrefab = spellPrefabs[2];
+            }
             
-            _chamberedSpell = Instantiate(prototypeSpellPrefab, tip.position, tip.rotation);
+            
+            _chamberedSpell = Instantiate(spellPrefab, tip.position, tip.rotation);
+            _chamberedSpell.GetComponent<Rigidbody>().useGravity = false;
             _chamberedSpell.transform.SetParent(tip);
             trajectory.enabled = true;
         }
@@ -33,9 +50,9 @@ namespace Project.Spells.Scripts
         {
             if (!_chamberedSpell) return;
             
-            spellDrawer.enabled = true;
             _chamberedSpell.transform.SetParent(null);
             Rigidbody rb = _chamberedSpell.GetComponent<Rigidbody>();
+            rb.useGravity = true;
             rb.AddForce(tip.up * _launchForce, ForceMode.Impulse);
 
             trajectory.enabled = false;
