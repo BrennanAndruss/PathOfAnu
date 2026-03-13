@@ -1,4 +1,4 @@
-ty Generated Files ==========
+# ========== Unity Generated Files ==========
 [Uu]ser[Ss]ettings/
 [Ll]ibrary/
 [Tt]emp/
@@ -24,6 +24,10 @@ MemoryCaptures/
 *.VC.db
 *.DS_Store
 
+.utmp/
+*_BurstDebugInformation_DoNotShip/
+mono_crash.0.0.json
+
 # ========== OS Generated Files ==========
 .DS_Store
 Thumbs.db
@@ -33,10 +37,16 @@ Desktop.ini
 # ========== Visual Studio ==========
 .vs/
 .vscode/
+*.slnx
+*.sln
 
 # ========== JetBrains Rider ==========
 .idea/
 *.sln.iml
+
+# ========== Houdini ==========
+heu_session.txt
+heu_settings.ini
 
 # ========== Unity Asset Store Tools ==========
 /Assets/AssetStoreTools*
