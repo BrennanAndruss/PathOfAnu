@@ -49,7 +49,7 @@ public class ProjectileMove : MonoBehaviour
             transform.position += transform.forward * (speed * Time.deltaTime);
 
             // Safety Check to Disable Objects
-            if (transform.position.y <= -100){
+            if (transform.position.y <= -100) {
                 Destroy(gameObject);
             }
         }

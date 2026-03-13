@@ -67,7 +67,6 @@
   <Project Path="AssistantCoreSDKRuntime.csproj" />
   <Project Path="Meta.XR.Audio.Editor.csproj" />
   <Project Path="Oculus.Interaction.OVR.Editor.csproj" />
-  <Project Path="Unity.RenderPipelines.Core.Samples.Runtime.csproj" />
   <Project Path="AssistantVoiceCommandCommon.csproj" />
   <Project Path="Unity.Burst.Editor.csproj" />
   <Project Path="Meta.XR.Editor.Tags.csproj" />
@@ -134,7 +133,6 @@
   <Project Path="Meta.XR.EnvironmentDepth.Editor.csproj" />
   <Project Path="Oculus.Interaction.Samples.Editor.UISet.csproj" />
   <Project Path="Oculus.Haptics.csproj" />
-  <Project Path="Unity.RenderPipelines.Core.Samples.Editor.csproj" />
   <Project Path="Meta.VoiceSDK.Mic.Other.csproj" />
   <Project Path="Meta.XR.Guides.Editor.csproj" />
   <Project Path="Meta.Voice.Hub.Runtime.csproj" />
