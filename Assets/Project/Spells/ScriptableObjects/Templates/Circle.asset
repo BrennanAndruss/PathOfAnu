@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Circle
   m_EditorClassIdentifier: Assembly-CSharp::Project.Spells.Scripts.GestureTemplate
   gestureName: Circle
+  spellType: 1
+  numStrokes: 1
   Points:
   - Pos: {x: 0.010179511, y: 0.19978027}
   - Pos: {x: -0.001206101, y: 0.2030037}

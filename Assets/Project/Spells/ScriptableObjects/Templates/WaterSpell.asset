@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: WaterSpell
   m_EditorClassIdentifier: Assembly-CSharp::Project.Spells.Scripts.GestureTemplate
   gestureName: WaterSpell
+  spellType: 3
+  numStrokes: 1
   Points:
   - Pos: {x: -0.30594882, y: 0.3213423}
   - Pos: {x: -0.29920512, y: 0.31505775}

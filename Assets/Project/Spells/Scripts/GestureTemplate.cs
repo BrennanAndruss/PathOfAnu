@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Project.Spells.Scripts
 {
@@ -6,6 +7,8 @@ namespace Project.Spells.Scripts
     public class GestureTemplate : ScriptableObject
     {
         public string gestureName;
-        public GesturePoint[] Points;
+        public SpellType spellType;
+        public int strokeCount;
+        public GesturePoint[] points;
     }
 }

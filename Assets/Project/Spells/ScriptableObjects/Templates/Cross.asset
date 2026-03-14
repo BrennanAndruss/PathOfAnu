@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Cross
   m_EditorClassIdentifier: Assembly-CSharp::Project.Spells.Scripts.GestureTemplate
   gestureName: Cross
+  spellType: 1
+  numStrokes: 2
   Points:
   - Pos: {x: -0.26579437, y: 0.20089762}
   - Pos: {x: -0.25892752, y: 0.1956895}

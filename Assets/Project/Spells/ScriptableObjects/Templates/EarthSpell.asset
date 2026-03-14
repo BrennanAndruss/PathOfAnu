@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: EarthSpell
   m_EditorClassIdentifier: Assembly-CSharp::Project.Spells.Scripts.GestureTemplate
   gestureName: EarthSpell
+  spellType: 4
+  numStrokes: 2
   Points:
   - Pos: {x: -0.31637046, y: 0.37700734}
   - Pos: {x: -0.31177413, y: 0.37033856}

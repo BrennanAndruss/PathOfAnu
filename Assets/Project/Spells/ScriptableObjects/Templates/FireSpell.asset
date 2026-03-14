@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: FireSpell
   m_EditorClassIdentifier: Assembly-CSharp::Project.Spells.Scripts.GestureTemplate
   gestureName: FireSpell
+  spellType: 2
+  numStrokes: 1
   Points:
   - Pos: {x: 0.17722878, y: 0.43000776}
   - Pos: {x: 0.16764481, y: 0.42203808}

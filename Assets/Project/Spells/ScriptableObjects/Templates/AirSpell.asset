@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: AirSpell
   m_EditorClassIdentifier: Assembly-CSharp::Project.Spells.Scripts.GestureTemplate
   gestureName: AirSpell
+  spellType: 5
+  numStrokes: 1
   Points:
   - Pos: {x: -0.35030118, y: -0.05450753}
   - Pos: {x: -0.34368736, y: -0.04692195}

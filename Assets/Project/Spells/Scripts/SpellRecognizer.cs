@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Project.Spells.Scripts
@@ -7,17 +8,30 @@ namespace Project.Spells.Scripts
     {
         [SerializeField] private SpellSettings spellSettings;
         [SerializeField] private GestureTemplate[] spellLibrary;
-        private Gesture[] _templates;
+        private Dictionary<int, List<Gesture>> _gestureBins = new();
+        private Dictionary<int, Gesture[]> _gestures = new();
         
         public Action<SpellType> OnSpellRecognized;
 
         private void Awake()
         {
-            // Preprocesses templates at startup
-            _templates = new Gesture[spellLibrary.Length];
-            for (int i = 0; i < spellLibrary.Length; i++)
+            // Preprocess gestures at startup
+            foreach (var template in spellLibrary)
             {
-                _templates[i] = new Gesture(spellLibrary[i].Points, spellLibrary[i].gestureName, spellSettings);
+                var gesture = new Gesture(template, spellSettings);
+
+                // Bin gestures by numStrokes
+                if (!_gestureBins.ContainsKey(gesture.StrokeCount))
+                {
+                    _gestureBins[gesture.StrokeCount] = new List<Gesture>();
+                }
+                _gestureBins[gesture.StrokeCount].Add(gesture);
+            }
+            
+            // Convert gesture lists to arrays
+            foreach (var bin in _gestureBins)
+            {
+                _gestures[bin.Key] = bin.Value.ToArray();
             }
         }
 
@@ -29,19 +43,10 @@ namespace Project.Spells.Scripts
             Debug.Log("[SpellRecognizer] " + candidate.Points.Length + " processed points");
             
             // Use the $Q Recognizer
-            RecognitionResult result = QRecognizer.Classify(candidate, _templates, spellSettings);
-            Debug.Log("[SpellRecognizer] Result: " + result.Name);
-
-            SpellType spellType = SpellType.Prototype;
-            if (result.Name == "Circle")
-            {
-                spellType = SpellType.Water;
-            }
-            else if (result.Name == "Cross")
-            {
-                spellType = SpellType.Fire;
-            }
-            OnSpellRecognized?.Invoke(spellType);
+            RecognitionResult result = QRecognizer.Classify(candidate, _gestures[candidate.StrokeCount], spellSettings);
+            Debug.Log("[SpellRecognizer] Result: " + result.Name + " " + result.SpellType + " " + result.Confidence);
+            
+            OnSpellRecognized?.Invoke(result.SpellType);
         }
     }
 }
