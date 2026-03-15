@@ -18,6 +18,7 @@ namespace Project.Spells.Scripts
             // Preprocess gestures at startup
             foreach (var template in spellLibrary)
             {
+                Debug.Log($"[SpellRecognizer] Template: {template.name} {template.strokeCount}");
                 var gesture = new Gesture(template, spellSettings);
 
                 // Bin gestures by numStrokes
@@ -41,9 +42,15 @@ namespace Project.Spells.Scripts
             var candidate = new Gesture(spellPoints, "UserDrawing", spellSettings);
             Debug.Log("[SpellRecognizer] " + spellPoints.Length + " gesture points");
             Debug.Log("[SpellRecognizer] " + candidate.Points.Length + " processed points");
+
+            if (!_gestures.TryGetValue(candidate.StrokeCount, out var gestures))
+            {
+                OnSpellRecognized?.Invoke(SpellType.Unknown);
+                return;
+            }
             
             // Use the $Q Recognizer
-            RecognitionResult result = QRecognizer.Classify(candidate, _gestures[candidate.StrokeCount], spellSettings);
+            RecognitionResult result = QRecognizer.Classify(candidate, gestures, spellSettings);
             Debug.Log("[SpellRecognizer] Result: " + result.Name + " " + result.SpellType + " " + result.Confidence);
             
             OnSpellRecognized?.Invoke(result.SpellType);

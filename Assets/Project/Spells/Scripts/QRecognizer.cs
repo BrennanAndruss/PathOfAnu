@@ -30,19 +30,22 @@ namespace Project.Spells.Scripts
         public static RecognitionResult Classify(Gesture candidate, Gesture[] templates, SpellSettings spellSettings)
         {
             float minDist = float.MaxValue;
-            string name = string.Empty;
-            SpellType type = SpellType.Unknown;
+            Gesture bestMatch = null;
             foreach (Gesture template in templates)
             {
                 float dist = GreedyCloudMatch(candidate, template, minDist, spellSettings);
-                if (dist >= minDist) continue;
-                
-                minDist = dist;
-                name = template.Name;
-                type = template.SpellType;
+                Debug.Log($"[QRecognizer] Checking {template.Name}: {dist}");
+                if (dist < minDist)
+                {
+                    minDist = dist;
+                    bestMatch = template;
+                }
             }
+            
+            if (bestMatch == null) 
+                return new RecognitionResult("None", SpellType.Unknown, float.MaxValue);
 
-            return new RecognitionResult(name, type, minDist);
+            return new RecognitionResult(bestMatch.Name, bestMatch.SpellType, minDist);
         }
 
         /// <summary>
@@ -177,10 +180,11 @@ namespace Project.Spells.Scripts
                 for (int j = indexNotMatched; j < n; j++)
                 {
                     float dist = Vector2.Distance(points1[i].Pos, points2[indicesNotMatched[j]].Pos);
-                    if (dist >= minDist) continue;
-                    
-                    minDist = dist;
-                    index = j;
+                    if (dist < minDist)
+                    {
+                        minDist = dist;
+                        index = j;
+                    }
                 }
 
                 indicesNotMatched[index] = indicesNotMatched[indexNotMatched];

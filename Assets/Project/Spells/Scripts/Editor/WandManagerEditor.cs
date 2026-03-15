@@ -47,6 +47,7 @@ namespace Project.Spells.Scripts.Editor
             GestureTemplate asset = ScriptableObject.CreateInstance<GestureTemplate>();
             asset.gestureName = _newTemplateName;
             asset.points = manager.CapturedProjectedPoints;
+            asset.strokeCount = asset.points[^1].StrokeId;
 
             string directory = "Assets/Project/Spells/ScriptableObjects/Templates";
             string path = $"{directory}/{_newTemplateName}.asset";
