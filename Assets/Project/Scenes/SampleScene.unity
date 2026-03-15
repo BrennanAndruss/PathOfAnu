@@ -460,6 +460,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4413598100591090367, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
+      propertyPath: spellLibrary.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413598100591090367, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
+      propertyPath: 'spellLibrary.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: cf091fa41ac7fac41ab43ba17147e012, type: 2}
+    - target: {fileID: 4413598100591090367, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
+      propertyPath: 'spellLibrary.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b1ba3e4c4f64558429538b305413a8c0, type: 2}
+    - target: {fileID: 4413598100591090367, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
+      propertyPath: 'spellLibrary.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 257f696445e6cfc408eedcd3c9e0ea0d, type: 2}
+    - target: {fileID: 4413598100591090367, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
+      propertyPath: 'spellLibrary.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: db3ffa11abc875b4bb715541681e8b79, type: 2}
+    - target: {fileID: 7359036532392301862, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
+      propertyPath: spellPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7359036532392301862, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
+      propertyPath: 'spellPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 296052022625890063, guid: b4106cdb0024246f3a3d8d215bf1be0d, type: 3}
+    - target: {fileID: 7359036532392301862, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
+      propertyPath: 'spellPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 3211812997994720100, guid: 33f074af0b11146318cadcbc76f5d8f1, type: 3}
     - target: {fileID: 7708665350561503744, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
       propertyPath: requestScenePermissionOnStartup
       value: 1

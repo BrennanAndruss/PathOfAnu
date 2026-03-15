@@ -6,11 +6,13 @@ namespace Project.Spells.Scripts
     public struct RecognitionResult
     {
         public readonly string Name;
+        public readonly SpellType SpellType;
         public readonly float Confidence;
 
-        public RecognitionResult(string name, float confidence)
+        public RecognitionResult(string name, SpellType type, float confidence)
         {
             Name = name;
+            SpellType = type;
             Confidence = confidence;
         }
     }
@@ -28,18 +30,22 @@ namespace Project.Spells.Scripts
         public static RecognitionResult Classify(Gesture candidate, Gesture[] templates, SpellSettings spellSettings)
         {
             float minDist = float.MaxValue;
-            string gestureClass = string.Empty;
+            Gesture bestMatch = null;
             foreach (Gesture template in templates)
             {
                 float dist = GreedyCloudMatch(candidate, template, minDist, spellSettings);
+                Debug.Log($"[QRecognizer] Checking {template.Name}: {dist}");
                 if (dist < minDist)
                 {
                     minDist = dist;
-                    gestureClass = template.Name;
+                    bestMatch = template;
                 }
             }
+            
+            if (bestMatch == null) 
+                return new RecognitionResult("None", SpellType.Unknown, float.MaxValue);
 
-            return new RecognitionResult(gestureClass, minDist);
+            return new RecognitionResult(bestMatch.Name, bestMatch.SpellType, minDist);
         }
 
         /// <summary>

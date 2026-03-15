@@ -181,28 +181,32 @@ namespace Project.Spells.Scripts
         {
             int size = spellSettings.lutSize;
             float invScale = spellSettings.InvLutScaleFactor;
+            // float lutScale = (float)size / spellSettings.maxIntCoordinates;
             
-            int[] lut = new int[spellSettings.lutSize * spellSettings.lutSize];
+            int[] lut = new int[size * size];
 
-            for (int i = 0; i < spellSettings.lutSize; i++)
+            for (int y = 0; y < size; y++)
             {
-                for (int j = 0; j < spellSettings.lutSize; j++)
+                for (int x = 0; x < size; x++)
                 {
-                    int minDist = int.MaxValue;
+                    float minDist = float.MaxValue;
                     int minIndex = -1;
+                    
                     for (int t = 0; t < points.Length; t++)
                     {
-                        int row = (int)(points[t].IntX * invScale);
-                        int col = (int)(points[t].IntY * invScale);
+                        float row = (points[t].IntY * invScale);
+                        float col = (points[t].IntX * invScale);
+                        // float row = (points[t].IntY / lutScale);
+                        // float col = (points[t].IntX / lutScale);
 
-                        int dist = (row - i) * (row - i) + (col - j) * (col - j);
+                        float dist = (row - y) * (row - y) + (col - x) * (col - x);
                         if (dist < minDist)
                         {
                             minDist = dist;
                             minIndex = t;
                         }
                     }
-                    lut[i * size + j] = minIndex;
+                    lut[y * size + x] = minIndex;
                 }
             }
 

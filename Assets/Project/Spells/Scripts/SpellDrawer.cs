@@ -32,6 +32,7 @@ namespace Project.Spells.Scripts
             if (triggerDown)
             {
                 Debug.Log("[SpellDrawer] Stroke start");
+                _numStrokes++;
                 StartNewStroke();
             }
 
@@ -43,7 +44,6 @@ namespace Project.Spells.Scripts
             if (triggerUp)
             {
                 Debug.Log("[SpellDrawer] Stroke end");
-                _numStrokes++;
                 _currentStroke = null;
             }
         }

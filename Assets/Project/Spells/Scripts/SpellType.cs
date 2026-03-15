@@ -6,6 +6,8 @@ namespace Project.Spells.Scripts
         Prototype,
         Fire,
         Water,
+        Earth,
+        Air,
         Electric,
     }
 }
