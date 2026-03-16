@@ -14,6 +14,7 @@ namespace Project.Spells.Scripts
         // Projection data
         private Vector3 _startPosition;
         private Vector3 _startForward;
+        [SerializeField] private GameObject drawParticles;
         
         // Stroke data
         private int _numStrokes = 0;
@@ -34,6 +35,8 @@ namespace Project.Spells.Scripts
                 Debug.Log("[SpellDrawer] Stroke start");
                 _numStrokes++;
                 StartNewStroke();
+                SetParticles(true);
+
             }
 
             if (triggerHeld)
@@ -45,6 +48,8 @@ namespace Project.Spells.Scripts
             {
                 Debug.Log("[SpellDrawer] Stroke end");
                 _currentStroke = null;
+                SetParticles(false);
+
             }
         }
 
@@ -93,6 +98,7 @@ namespace Project.Spells.Scripts
             }
             
             FinalizeSpell();
+            SetParticles(false);
         }
 
         private void FinalizeSpell()
@@ -138,6 +144,14 @@ namespace Project.Spells.Scripts
             _numStrokes = 0;
             _strokeObjs.Clear();
             _allStrokePoints.Clear();
+            SetParticles(false);
+        }
+
+        private void SetParticles(bool active)
+        {
+            if (drawParticles == null) return;
+
+            drawParticles.SetActive(active);
         }
     }
 }
