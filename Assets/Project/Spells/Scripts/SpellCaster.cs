@@ -26,13 +26,21 @@ namespace Project.Spells.Scripts
         public void PrepareSpell(SpellType spellType)
         {
             GameObject spellPrefab = spellPrefabs[0];
-            if (spellType == SpellType.Water || spellType == SpellType.Air)
+            if (spellType == SpellType.Water)
             {
                 spellPrefab = spellPrefabs[0];
             }
-            else if (spellType == SpellType.Fire || spellType == SpellType.Earth)
+            else if (spellType == SpellType.Fire)
             {
                 spellPrefab = spellPrefabs[1];
+            }
+            else if (spellType == SpellType.Earth)
+            {
+                spellPrefab = spellPrefabs[3];
+            }
+            else if (spellType == SpellType.Air)
+            {
+                spellPrefab = spellPrefabs[4];
             }
             else if (spellType == SpellType.Electric)
             {
