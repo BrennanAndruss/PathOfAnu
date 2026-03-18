@@ -3122,7 +3122,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.0,"g":0.2908768057823181,"b":0.6477986574172974,"a":1.0},"time":0.0},{"color":{"r":0.010778774507343769,"g":0.1996455192565918,"b":0.6855344772338867,"a":1.0},"time":0.7411764860153198},{"color":{"r":0.40105435252189639,"g":3.643869161605835,"b":3.398061513900757,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":0.917633056640625,"time":0.13138018548488618},{"alpha":1.0,"time":0.2500038146972656},{"alpha":1.0,"time":0.7117723226547241},{"alpha":0.0,"time":1.0}],"gradientMode":2}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.6729559302330017,"g":0.08418537676334381,"b":0.0,"a":1.0},"time":0.06863508373498917},{"color":{"r":0.6779195666313171,"g":0.08715102076530457,"b":2.7229543775320055e-7,"a":1.0},"time":0.15098802745342256},{"color":{"r":0.9182389378547669,"g":0.27605703473091128,"b":0.0,"a":1.0},"time":0.9490196108818054},{"color":{"r":0.40105435252189639,"g":3.643869161605835,"b":3.398061513900757,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":0.917633056640625,"time":0.04118410125374794},{"alpha":1.0,"time":0.2500038146972656},{"alpha":1.0,"time":0.9313801527023315},{"alpha":0.0,"time":1.0}],"gradientMode":2}'
     m_Space: -1
   m_Property:
     name: Color
@@ -3286,7 +3286,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":1.4980392456054688,"g":1.4980392456054688,"b":1.4980392456054688,"a":1.0},"time":0.0},{"color":{"r":1.4980392456054688,"g":1.4980392456054688,"b":1.4980392456054688,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.003738460363820195},{"alpha":1.0,"time":1.0}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":1.4980392456054688,"g":1.4980392456054688,"b":1.4980392456054688,"a":1.0},"time":0.0},{"color":{"r":1.4980392456054688,"g":1.4980392456054688,"b":1.4980392456054688,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":1.0,"time":1.0}],"gradientMode":0}'
     m_Space: -1
   m_Property:
     name: gradient
