@@ -1819,6 +1819,48 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 544356682056267554, guid: d8d58740a944e544e84794077f350e3f, type: 3}
   m_PrefabInstance: {fileID: 97639442}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &102619580 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1952630278329162703, guid: ec95b23b6dc48b746b093e832fc4370d, type: 3}
+  m_PrefabInstance: {fileID: 368113334}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &102619583 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 1310873683216965458, guid: ec95b23b6dc48b746b093e832fc4370d, type: 3}
+  m_PrefabInstance: {fileID: 368113334}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &102619584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102619580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85212d1b13358614ca54e74ba56f93ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Deform::Deform.Deformable
+  assignOriginalMeshOnDisable: 1
+  updateMode: 0
+  cullingMode: 1
+  stripMode: 1
+  normalsRecalculation: 0
+  boundsRecalculation: 0
+  colliderRecalculation: 0
+  meshCollider: {fileID: 0}
+  data:
+    OriginalMesh: {fileID: 3742418645415677047, guid: 90f687938db1b4b4d9c01f821c5cc8ec, type: 3}
+    Target:
+      meshFilter: {fileID: 102619583}
+      skinnedMeshRenderer: {fileID: 0}
+    initialized: 1
+  deformerElements:
+  - component: {fileID: 1572474950}
+    active: 1
+  customBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0.25, y: 0.25, z: 0.25}
 --- !u!1001 &109849178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2401,8 +2443,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveTrigger
   sineDeformer: {fileID: 1572474950}
   targetTag: Spell
+  stayActiveAfterFirstContact: 1
   activeFactor: 1
   inactiveFactor: 0
+  waveSpeed: 2
   debugLogs: 1
 --- !u!54 &154451083
 Rigidbody:
@@ -3917,6 +3961,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1310873683216965458, guid: ec95b23b6dc48b746b093e832fc4370d, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 3742418645415677047, guid: 90f687938db1b4b4d9c01f821c5cc8ec, type: 3}
     - target: {fileID: 1540831010345519851, guid: ec95b23b6dc48b746b093e832fc4370d, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -4037,6 +4085,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1187109641811514089, guid: ec95b23b6dc48b746b093e832fc4370d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 154451083}
+    - targetCorrespondingSourceObject: {fileID: 1952630278329162703, guid: ec95b23b6dc48b746b093e832fc4370d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 102619584}
   m_SourcePrefab: {fileID: 100100000, guid: ec95b23b6dc48b746b093e832fc4370d, type: 3}
 --- !u!1001 &371374564
 PrefabInstance:
@@ -8967,6 +9018,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1919478665}
   m_LocalEulerAnglesHint: {x: 0, y: 46.041, z: 0}
+--- !u!1 &881494450 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2754413413849512989, guid: 0966cf5b245fdcf428b97fa13388f349, type: 3}
+  m_PrefabInstance: {fileID: 1638316165076109182}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &881494453 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 3391683480770803840, guid: 0966cf5b245fdcf428b97fa13388f349, type: 3}
+  m_PrefabInstance: {fileID: 1638316165076109182}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &881494454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881494450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85212d1b13358614ca54e74ba56f93ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Deform::Deform.Deformable
+  assignOriginalMeshOnDisable: 1
+  updateMode: 0
+  cullingMode: 1
+  stripMode: 1
+  normalsRecalculation: 0
+  boundsRecalculation: 0
+  colliderRecalculation: 0
+  meshCollider: {fileID: 0}
+  data:
+    OriginalMesh: {fileID: 3742418645415677047, guid: 90f687938db1b4b4d9c01f821c5cc8ec, type: 3}
+    Target:
+      meshFilter: {fileID: 881494453}
+      skinnedMeshRenderer: {fileID: 0}
+    initialized: 1
+  deformerElements:
+  - component: {fileID: 1262110826}
+    active: 1
+  customBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0.25, y: 0.25, z: 0.25}
 --- !u!1001 &882866153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13584,10 +13677,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Deform::Deform.SineDeformer
   update: 1
   frequency: 1.0322297
-  amplitude: -1.88
+  amplitude: -0.45111084
   falloff: 1.06
-  offset: 0
-  speed: 0
+  offset: 0.58
+  speed: 3
   axis: {fileID: 1262110825}
   speedOffset: 0
 --- !u!1001 &1272261792
@@ -17536,10 +17629,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Deform::Deform.SineDeformer
   update: 1
   frequency: 2.18
-  amplitude: 4.44
+  amplitude: 0.24157712
   falloff: 1.9
-  offset: 0.86
-  speed: 0
+  offset: 0.1
+  speed: 3
   axis: {fileID: 1572474949}
   speedOffset: 0
 --- !u!1 &1576876865
@@ -24540,7 +24633,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4638242307430379609, guid: 9c587fed9358e40b3b2d3db251011bf3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 49.2
+      value: 6.2
       objectReference: {fileID: 0}
     - target: {fileID: 4638242307430379609, guid: 9c587fed9358e40b3b2d3db251011bf3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -28866,6 +28959,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3391683480770803840, guid: 0966cf5b245fdcf428b97fa13388f349, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 3742418645415677047, guid: 90f687938db1b4b4d9c01f821c5cc8ec, type: 3}
     - target: {fileID: 3693443981815123894, guid: 0966cf5b245fdcf428b97fa13388f349, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -28896,7 +28993,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5819670208955953159, guid: 0966cf5b245fdcf428b97fa13388f349, type: 3}
       propertyPath: activeFactor
-      value: 20
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5819670208955953159, guid: 0966cf5b245fdcf428b97fa13388f349, type: 3}
+      propertyPath: alwaysActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5819670208955953159, guid: 0966cf5b245fdcf428b97fa13388f349, type: 3}
       propertyPath: sineDeformer
@@ -28925,6 +29026,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3267910604483245371, guid: 0966cf5b245fdcf428b97fa13388f349, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1771070420}
+    - targetCorrespondingSourceObject: {fileID: 2754413413849512989, guid: 0966cf5b245fdcf428b97fa13388f349, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 881494454}
   m_SourcePrefab: {fileID: 100100000, guid: 0966cf5b245fdcf428b97fa13388f349, type: 3}
 --- !u!1001 &1923032802183152484
 PrefabInstance:
