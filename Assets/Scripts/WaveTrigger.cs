@@ -1,47 +1,65 @@
 using UnityEngine;
-using Deform; // Ensure you include the Deform namespace
+using Deform;
 
 public class WaveTrigger : MonoBehaviour
 {
-    public SineDeformer sineDeformer; // Drag your Sine Deformer here in the Inspector
+    public SineDeformer sineDeformer; 
     public string targetTag = "Spell";
+
+    [Header("Mode")]
+    public bool alwaysActive = false;
+
     [Header("Wave Values")]
     public float activeFactor = 1f;
     public float inactiveFactor = 0f;
+    public float waveSpeed = 2f; // How fast the chime wiggles
 
     [Header("Debug")]
     public bool debugLogs = true;
 
     private void Start()
     {
-        // start with the with the wave disabled
+        if (alwaysActive)
+        {
+            SetWaveFactor(activeFactor, "Start (Always Active)");
+            return;
+        }
+
         SetWaveFactor(inactiveFactor, "Start");
+    }
+
+    // This Update loop creates the continuous movement
+    private void Update()
+    {
+        if (sineDeformer != null && sineDeformer.Factor > 0)
+        {
+            // Moving the Offset property is what makes the wave "scroll"
+            sineDeformer.Offset += Time.deltaTime * waveSpeed;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (debugLogs)
+        if (alwaysActive)
         {
-            Debug.Log($"[WaveTrigger] OnTriggerEnter from '{other.name}' (tag: {other.tag}) on '{name}'. Looking for tag '{targetTag}'.", this);
+            return;
         }
 
         if (other.CompareTag(targetTag))
         {
-            // Activate the wave by setting its Factor (Amplitude)
             SetWaveFactor(activeFactor, "OnTriggerEnter");
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (debugLogs)
+        if (alwaysActive)
         {
-            Debug.Log($"[WaveTrigger] OnTriggerExit from '{other.name}' (tag: {other.tag}) on '{name}'.", this);
+            return;
         }
 
         if (other.CompareTag(targetTag))
         {
-            // Deactivate when they leave
             SetWaveFactor(inactiveFactor, "OnTriggerExit");
         }
     }
@@ -50,10 +68,7 @@ public class WaveTrigger : MonoBehaviour
     {
         if (sineDeformer == null)
         {
-            if (debugLogs)
-            {
-                Debug.LogWarning($"[WaveTrigger] No SineDeformer assigned on '{name}' while handling {source}.", this);
-            }
+            if (debugLogs) Debug.LogWarning($"[WaveTrigger] No SineDeformer assigned on '{name}'.", this);
             return;
         }
 
@@ -61,7 +76,7 @@ public class WaveTrigger : MonoBehaviour
 
         if (debugLogs)
         {
-            Debug.Log($"[WaveTrigger] Set factor to {factor} via {source} on '{name}'.", this);
+            Debug.Log($"[WaveTrigger] Set factor to {factor} via {source}.", this);
         }
     }
 }
