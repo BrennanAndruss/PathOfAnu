@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - SamplesInfoPanel
+  - Spell
+  - CandleFire
+  - Bowl-Water
   layers:
   - Default
   - TransparentFX
@@ -11,7 +15,7 @@ TagManager:
   - Overlay UI
   - Water
   - UI
-  - 
+  - Interactables
   - 
   - 
   - 

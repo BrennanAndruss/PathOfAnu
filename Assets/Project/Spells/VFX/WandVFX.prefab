@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6652069716827970299}
   m_Layer: 0
   m_Name: Trail
-  m_TagString: Untagged
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 871211313682867310}
   m_Layer: 0
   m_Name: HeadBlast
-  m_TagString: Untagged
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5018,7 +5018,7 @@ GameObject:
   - component: {fileID: 8158730699216805521}
   m_Layer: 0
   m_Name: BubblesFlys
-  m_TagString: Untagged
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9863,7 +9863,7 @@ GameObject:
   - component: {fileID: 775410135265018642}
   m_Layer: 0
   m_Name: HeadParticle
-  m_TagString: Untagged
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14708,7 +14708,7 @@ GameObject:
   - component: {fileID: 9029867319317034932}
   m_Layer: 0
   m_Name: Bubbles
-  m_TagString: Untagged
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19551,7 +19551,7 @@ GameObject:
   - component: {fileID: 4638242307430379609}
   m_Layer: 0
   m_Name: WandVFX
-  m_TagString: Untagged
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19590,7 +19590,7 @@ GameObject:
   - component: {fileID: 5427277149814622361}
   m_Layer: 0
   m_Name: ColorTrail
-  m_TagString: Untagged
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

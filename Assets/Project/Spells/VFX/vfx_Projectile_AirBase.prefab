@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4393517949275248331}
   m_Layer: 0
   m_Name: Inner
-  m_TagString: Untagged
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4849,7 +4849,7 @@ GameObject:
   - component: {fileID: 6817085298263030221}
   m_Layer: 0
   m_Name: Beam
-  m_TagString: Untagged
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9684,7 +9684,7 @@ GameObject:
   - component: {fileID: 6893811036673426281}
   m_Layer: 0
   m_Name: Trail
-  m_TagString: Untagged
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9845,7 +9845,7 @@ GameObject:
   - component: {fileID: 3202219712401225252}
   m_Layer: 0
   m_Name: MagicDust
-  m_TagString: Untagged
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14778,7 +14778,7 @@ GameObject:
   - component: {fileID: 5663393710919419327}
   m_Layer: 0
   m_Name: Projectile
-  m_TagString: Untagged
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19613,7 +19613,7 @@ GameObject:
   - component: {fileID: 1789956005706892940}
   m_Layer: 0
   m_Name: Trail (1)
-  m_TagString: Untagged
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19773,7 +19773,7 @@ GameObject:
   - component: {fileID: 2686000325073839453}
   m_Layer: 0
   m_Name: Trail (2)
-  m_TagString: Untagged
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
