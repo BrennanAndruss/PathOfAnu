@@ -7,7 +7,7 @@ public class WaveTrigger : MonoBehaviour
     public string targetTag = "Spell";
 
     [Header("Mode")]
-    public bool alwaysActive = false;
+    public bool stayActiveAfterFirstContact = true;
 
     [Header("Wave Values")]
     public float activeFactor = 1f;
@@ -17,20 +17,23 @@ public class WaveTrigger : MonoBehaviour
     [Header("Debug")]
     public bool debugLogs = true;
 
+    private bool isLatchedActive;
+
     private void Start()
     {
-        if (alwaysActive)
-        {
-            SetWaveFactor(activeFactor, "Start (Always Active)");
-            return;
-        }
-
+        isLatchedActive = false;
         SetWaveFactor(inactiveFactor, "Start");
     }
 
     // This Update loop creates the continuous movement
     private void Update()
     {
+        if (isLatchedActive && sineDeformer != null && !Mathf.Approximately(sineDeformer.Factor, activeFactor))
+        {
+            // Keep the wave on after the first valid spell contact.
+            sineDeformer.Factor = activeFactor;
+        }
+
         if (sineDeformer != null && sineDeformer.Factor > 0)
         {
             // Moving the Offset property is what makes the wave "scroll"
@@ -40,20 +43,25 @@ public class WaveTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (alwaysActive)
-        {
-            return;
-        }
-
         if (other.CompareTag(targetTag))
         {
             SetWaveFactor(activeFactor, "OnTriggerEnter");
+
+            if (stayActiveAfterFirstContact && !isLatchedActive)
+            {
+                isLatchedActive = true; 
+
+                if (debugLogs)
+                {
+                    Debug.Log($"[WaveTrigger] Latched active after first '{targetTag}' contact on '{name}'.", this);
+                }
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (alwaysActive)
+        if (isLatchedActive)
         {
             return;
         }
