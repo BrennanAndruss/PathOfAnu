@@ -64,5 +64,8 @@ Assets/Plugins/Tools/TextMesh Pro/Examples & Extras/
 **/HeavyAssets/
 **/HeavyAssets
 
+# ========== Custom: Ignore .blob crash report files ==========
+*.blob
+
 # End of .gitignore
 ProjectSettings/EditorBuildSettings.asset
