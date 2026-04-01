@@ -47,6 +47,7 @@ Desktop.ini
 # ========== Houdini ==========
 heu_session.txt
 heu_settings.ini
+/HoudiniEngineAssetCache/
 
 # ========== Unity Asset Store Tools ==========
 /Assets/AssetStoreTools*
