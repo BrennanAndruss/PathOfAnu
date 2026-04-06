@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Project.Spells.Scripts
+namespace _Project.Features.Spells.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "SpellSettings", menuName = "Spells/SpellSettings")]
     public class SpellSettings : ScriptableObject

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Project.Spells.Scripts
+namespace _Project.Features.Spells.Scripts
 {
     /// <summary>
     /// Captured directly from the VR Controller in 3D space.

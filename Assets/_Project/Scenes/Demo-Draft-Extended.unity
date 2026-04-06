@@ -10559,6 +10559,87 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 544356682056267554, guid: d8d58740a944e544e84794077f350e3f, type: 3}
   m_PrefabInstance: {fileID: 975280800}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &983382841
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 983382844}
+  - component: {fileID: 983382843}
+  - component: {fileID: 983382842}
+  m_Layer: 0
+  m_Name: BaseProjectile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!54 &983382842
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983382841}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &983382843
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983382841}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &983382844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983382841}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &984929552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27621,6 +27702,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera Rig
       objectReference: {fileID: 0}
+    - target: {fileID: 3562787986898399083, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
+      propertyPath: spellLibrary.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562787986898399083, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
+      propertyPath: 'spellLibrary.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ab297bc82fa7b3d459b89347f75d8514, type: 2}
+    - target: {fileID: 3562787986898399083, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
+      propertyPath: 'spellLibrary.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: c1ee3086875f3e54e92efc8cc59a00d1, type: 2}
+    - target: {fileID: 3562787986898399083, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
+      propertyPath: 'spellLibrary.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: efd9b42e28f34464687b2dbc34d61ceb, type: 2}
+    - target: {fileID: 3562787986898399083, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
+      propertyPath: 'spellLibrary.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: c60f310f766a5cb48bce84aa3394b1c3, type: 2}
     - target: {fileID: 4134788382795187639, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 571.8229
@@ -29130,7 +29231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5939560870221055922, guid: 7c951234868bd4932baa6c8e97290fa6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5939560870221055922, guid: 7c951234868bd4932baa6c8e97290fa6, type: 3}
       propertyPath: m_TagString
@@ -30250,6 +30351,7 @@ SceneRoots:
   - {fileID: 717862147}
   - {fileID: 1805141761}
   - {fileID: 1899558012}
+  - {fileID: 983382844}
   - {fileID: 972245913863248258}
   - {fileID: 4633124257816763854}
   - {fileID: 536806895}
