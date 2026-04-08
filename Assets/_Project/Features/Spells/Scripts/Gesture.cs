@@ -1,4 +1,6 @@
-namespace Project.Spells.Scripts
+using _Project.Features.Spells.ScriptableObjects;
+
+namespace _Project.Features.Spells.Scripts
 {
     public class Gesture
     {
@@ -17,9 +19,9 @@ namespace Project.Spells.Scripts
             this.Lut = QProcessor.ConstructLut(Points, settings);
         }
 
-        public Gesture(GestureTemplate template, SpellSettings settings)
+        public Gesture(GestureData template, SpellSettings settings)
         {
-            this.Name = template.gestureName;
+            this.Name = template.name;
             this.SpellType = template.spellType;
             this.StrokeCount = template.strokeCount;
             this.Points = QProcessor.Normalize(template.points, settings);

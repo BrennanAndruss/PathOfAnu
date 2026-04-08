@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 632e05e519ebf2b4fa633535497ac68d, type: 3}
-  m_Name: AirSpell
+  m_Name: AirGesture
   m_EditorClassIdentifier: Assembly-CSharp::Project.Spells.Scripts.GestureTemplate
-  gestureName: AirSpell
+  gestureName: Air
   spellType: 5
   strokeCount: 1
   points:

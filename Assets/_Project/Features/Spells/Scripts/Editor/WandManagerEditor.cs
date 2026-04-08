@@ -1,7 +1,8 @@
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
+using _Project.Features.Spells.ScriptableObjects;
 
-namespace Project.Spells.Scripts.Editor
+namespace _Project.Features.Spells.Scripts.Editor
 {
     [CustomEditor(typeof(WandManager))]
     public class WandManagerEditor : UnityEditor.Editor
@@ -44,7 +45,7 @@ namespace Project.Spells.Scripts.Editor
 
         private void SaveTemplate(WandManager manager)
         {
-            GestureTemplate asset = ScriptableObject.CreateInstance<GestureTemplate>();
+            GestureData asset = ScriptableObject.CreateInstance<GestureData>();
             asset.gestureName = _newTemplateName;
             asset.points = manager.CapturedProjectedPoints;
             asset.strokeCount = asset.points[^1].StrokeId;

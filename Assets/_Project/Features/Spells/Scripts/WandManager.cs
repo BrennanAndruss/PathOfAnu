@@ -1,8 +1,8 @@
-using System;
 using System.Collections.Generic;
+using _Project.Features.Spells.ScriptableObjects;
 using UnityEngine;
 
-namespace Project.Spells.Scripts
+namespace _Project.Features.Spells.Scripts
 {
     public enum WandState
     {
@@ -20,6 +20,8 @@ namespace Project.Spells.Scripts
         [SerializeField] private Transform centerEyeAnchor;
         private Vector3 _projectionOrigin;
         private Quaternion _projectionRotation;
+
+        [SerializeField] private SpellData[] spellLibrary;
         
         // Spell script references
         private SpellDrawer _drawer;
@@ -36,6 +38,18 @@ namespace Project.Spells.Scripts
             _drawer = GetComponent<SpellDrawer>();
             _recognizer = GetComponent<SpellRecognizer>();
             _caster = GetComponent<SpellCaster>();
+            
+            // Pass down gesture templates and projectile prefabs
+            GestureData[] gestures = new GestureData[spellLibrary.Length];
+            ProjectileData[] projectiles = new ProjectileData[spellLibrary.Length];
+            for (int i = 0; i < spellLibrary.Length; i++)
+            {
+                gestures[i] = spellLibrary[i].gestureData;
+                projectiles[i] = spellLibrary[i].projectileData;
+            }
+
+            _recognizer.SetGestures(gestures);
+            _caster.SetProjectilePrefabs(projectiles);
         }
 
         private void OnEnable()

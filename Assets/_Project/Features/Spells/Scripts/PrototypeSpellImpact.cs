@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Project.Spells.Scripts
+namespace _Project.Features.Spells.Scripts
 {
     public class PrototypeSpellImpact : MonoBehaviour
     {
