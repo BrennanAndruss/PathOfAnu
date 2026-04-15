@@ -13,13 +13,13 @@ namespace _Project.Features.Spells.Scripts
         
         public Action<SpellType> OnSpellRecognized;
 
-        public void SetGestures(GestureData[] gestures)
+        public void SetGestures(SpellData[] spellLibrary)
         {
             // Preprocess gestures at startup
-            foreach (var template in gestures)
+            foreach (var spell in spellLibrary)
             {
-                Debug.Log($"[SpellRecognizer] Template: {template.name} {template.strokeCount}");
-                var gesture = new Gesture(template, spellSettings);
+                Debug.Log($"[SpellRecognizer] Template: {spell.name} {spell.gestureData.strokeCount}");
+                var gesture = new Gesture(spell, spellSettings);
 
                 // Bin gestures by numStrokes
                 if (!_gestureBins.ContainsKey(gesture.StrokeCount))

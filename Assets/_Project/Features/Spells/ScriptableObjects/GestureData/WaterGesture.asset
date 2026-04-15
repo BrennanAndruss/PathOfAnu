@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 632e05e519ebf2b4fa633535497ac68d, type: 3}
   m_Name: WaterGesture
   m_EditorClassIdentifier: Assembly-CSharp::Project.Spells.Scripts.GestureTemplate
-  gestureName: Water
-  spellType: 3
+  spellType: 1
   strokeCount: 1
   points:
   - Pos: {x: -0.3348212, y: -0.051019527}

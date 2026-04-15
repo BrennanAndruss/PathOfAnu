@@ -7121,6 +7121,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Project.Spells.Scripts.WandManager
   centerEyeAnchor: {fileID: 7535980958334334817}
+  spellLibrary:
+  - {fileID: 11400000, guid: ab297bc82fa7b3d459b89347f75d8514, type: 2}
+  - {fileID: 11400000, guid: c1ee3086875f3e54e92efc8cc59a00d1, type: 2}
+  - {fileID: 11400000, guid: efd9b42e28f34464687b2dbc34d61ceb, type: 2}
+  - {fileID: 11400000, guid: c60f310f766a5cb48bce84aa3394b1c3, type: 2}
   CapturedProjectedPoints: []
 --- !u!114 &8040172195080989204
 MonoBehaviour:
@@ -7136,6 +7141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player.SpellDrawer
   tip: {fileID: 983733279523114151}
   strokeWidth: 0.01
+  drawParticles: {fileID: 0}
 --- !u!114 &4413598100591090367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7149,9 +7155,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Project.Spells.Scripts.SpellRecognizer
   spellSettings: {fileID: 11400000, guid: ab67e0d698dd6ee42b374c6120d488b4, type: 2}
-  spellLibrary:
-  - {fileID: 11400000, guid: 7472b3ca1eef3d743b9cd4c4b09b15e6, type: 2}
-  - {fileID: 11400000, guid: 3dbffa8152301c94ab0fe30562733a4e, type: 2}
 --- !u!114 &7359036532392301862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7164,10 +7167,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd130c3f7f7ec549980c5a247c37949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.SpellCaster
-  spellDrawer: {fileID: 8040172195080989204}
   tip: {fileID: 983733279523114151}
   trajectory: {fileID: 7799330480115397153}
-  prototypeSpellPrefab: {fileID: 3630220589214145317, guid: 9aac671d931ba664da087df642287219, type: 3}
+  oneShotSource: {fileID: 0}
+  loopSource: {fileID: 0}
+  castSFX: {fileID: 0}
+  projectileSFX: {fileID: 0}
+  waitingSFX: {fileID: 0}
+  waitingVolume: 1
 --- !u!1 &5827292556830320774
 GameObject:
   m_ObjectHideFlags: 0

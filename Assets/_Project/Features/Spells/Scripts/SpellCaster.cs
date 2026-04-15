@@ -16,7 +16,7 @@ namespace _Project.Features.Spells.Scripts
         [SerializeField] private AudioSource oneShotSource;   // cast + launch
         [SerializeField] private AudioSource loopSource;      // waiting loop
         // one of these sources should move to Spell / Projectile (moving in the world)
-        // the other stays attached to the wand
+        // the other will be moved to WandManager (for all spell drawing system sounds)
 
         [SerializeField] private AudioClip castSFX;         // wand sfx
         [SerializeField] private AudioClip projectileSFX;   // spell-specific
@@ -24,10 +24,9 @@ namespace _Project.Features.Spells.Scripts
 
         [SerializeField] private float waitingVolume = 1f;
 
-        // Spell projectiles
-        private Dictionary<SpellType, ProjectileData> _projectileData = new();
-        private ProjectileData _chamberedData;
-        private GameObject _chamberedProjectile;
+        // Chambered spell
+        private SpellType _chamberedType;
+        private GameObject _chamberedSpell;
 
         public Action OnSpellCasted;
 
@@ -35,40 +34,31 @@ namespace _Project.Features.Spells.Scripts
         {
             trajectory.enabled = false;
 
-            if (loopSource != null)
+            if (loopSource)
             {
                 loopSource.loop = true;
                 loopSource.playOnAwake = false;
             }
 
-            if (oneShotSource != null)
+            if (oneShotSource)
             {
                 oneShotSource.playOnAwake = false;
             }
         }
 
-        public void SetProjectilePrefabs(ProjectileData[] projectiles)
+        public void PrepareSpell(SpellData spell)
         {
-            foreach (var projectile in projectiles)
-            {
-                _projectileData.Add(projectile.spellType, projectile);
-            }
-        }
-
-        public void PrepareSpell(SpellType spellType)
-        {
-            Debug.Log("[SpellCaster] Preparing spell: " + spellType);
-            var projectileData = _projectileData[spellType];
-            if (!projectileData) return;
+            _chamberedType = spell.spellType;
+            Debug.Log("[SpellCaster] Preparing spell: " + spell.spellType);
+            Debug.Log(spell.spellPrefab);
             
-            _chamberedData = projectileData;
-            Debug.Log("[SpellCaster] Chambered projectile: " + _chamberedData.name);
-
-            _chamberedProjectile = Instantiate(_chamberedData.prefab, tip.position, tip.rotation);
-            _chamberedProjectile.GetComponent<Rigidbody>().useGravity = false;
-            _chamberedProjectile.transform.SetParent(tip);
-            _chamberedProjectile.transform.localPosition = Vector3.zero;
-            _chamberedProjectile.transform.localRotation = Quaternion.identity;
+            var projectilePrefab = spell.spellPrefab;
+            _chamberedSpell = Instantiate(projectilePrefab, tip.position, tip.rotation);
+            _chamberedSpell.GetComponent<Rigidbody>().useGravity = false;
+            _chamberedSpell.transform.SetParent(tip);
+            _chamberedSpell.transform.localPosition = Vector3.zero;
+            _chamberedSpell.transform.localRotation = Quaternion.identity;
+            Debug.Log("[SpellCaster] Chambered spell: " + _chamberedType + " " + _chamberedSpell.name);
             
             trajectory.enabled = true;
 
@@ -77,26 +67,27 @@ namespace _Project.Features.Spells.Scripts
 
         public void CastSpell()
         {
-            if (!_chamberedProjectile) return;
+            if (!_chamberedSpell) return;
             Debug.Log("[SpellCaster] Casting spell");
 
             StopWaitingSFX();
 
-            _chamberedProjectile.transform.SetParent(null);
-
-            Rigidbody rb = _chamberedProjectile.GetComponent<Rigidbody>();
+            Rigidbody rb = _chamberedSpell.GetComponent<Rigidbody>();
             rb.useGravity = true;
-            rb.AddForce(tip.up * _chamberedData.launchForce, ForceMode.Impulse);
             
-            // Start projectile life
-            // SpellProjectile spellProjectile = _chamberedProjectile.GetComponent<SpellProjectile>();
-            // spellProjectile.Launch();
+            // Cast projectile
+            SpellProjectile spellProjectile = _chamberedSpell.GetComponent<SpellProjectile>();
+            spellProjectile.Cast(tip.up);
+            if (oneShotSource || castSFX)
+            {
+                oneShotSource.PlayOneShot(castSFX);
+            }
             
             PlayCastSFX();
             PlayProjectileSFX();
 
             trajectory.enabled = false;
-            _chamberedProjectile = null;
+            _chamberedSpell = null;
 
             OnSpellCasted?.Invoke();
             Debug.Log("[SpellCaster] Spell casted");

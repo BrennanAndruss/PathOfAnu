@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fbb09aedc35b7d46a87ac8836f3e286, type: 3}
   m_Name: WaterSpell
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Features.Spells.ScriptableObjects.SpellData
-  spellType: 3
-  spellGesture: {fileID: 0}
-  spellProjectile: {fileID: 0}
+  spellType: 1
+  gestureData: {fileID: 11400000, guid: b1ba3e4c4f64558429538b305413a8c0, type: 2}
+  spellPrefab: {fileID: 1614448349752533350, guid: b8ab42f637597044581c896dc52dcfb0, type: 3}

@@ -29,7 +29,8 @@ namespace _Project.Features.Spells.Scripts
         private SpellCaster _caster;
         
 #if UNITY_EDITOR
-        [HideInInspector] public GesturePoint[] CapturedProjectedPoints;
+        [HideInInspector] 
+        public GesturePoint[] capturedProjectedPoints;
 #endif
 
         private void Awake()
@@ -39,17 +40,8 @@ namespace _Project.Features.Spells.Scripts
             _recognizer = GetComponent<SpellRecognizer>();
             _caster = GetComponent<SpellCaster>();
             
-            // Pass down gesture templates and projectile prefabs
-            GestureData[] gestures = new GestureData[spellLibrary.Length];
-            ProjectileData[] projectiles = new ProjectileData[spellLibrary.Length];
-            for (int i = 0; i < spellLibrary.Length; i++)
-            {
-                gestures[i] = spellLibrary[i].gestureData;
-                projectiles[i] = spellLibrary[i].projectileData;
-            }
-
-            _recognizer.SetGestures(gestures);
-            _caster.SetProjectilePrefabs(projectiles);
+            // Pass down gesture templates to SpellRecognizer
+            _recognizer.SetGestures(spellLibrary);
         }
 
         private void OnEnable()
@@ -140,7 +132,7 @@ namespace _Project.Features.Spells.Scripts
 #if UNITY_EDITOR
         private void HandleSpellTemplateDrawn(List<WorldPoint> rawPoints)
         {
-            CapturedProjectedPoints = ProjectPoints(rawPoints);
+            capturedProjectedPoints = ProjectPoints(rawPoints);
             _wandState = WandState.Processing;
             
             Debug.Log("<color=green>Spell template buffered!</color> Ready to save in the Inspector.");
@@ -148,7 +140,7 @@ namespace _Project.Features.Spells.Scripts
 
         public void ClearCapturedGesture()
         {
-            CapturedProjectedPoints = null;
+            capturedProjectedPoints = null;
             _drawer.ClearSpell();
             _wandState = WandState.Idle;
         }
@@ -159,7 +151,8 @@ namespace _Project.Features.Spells.Scripts
             if (spellType != SpellType.Unknown)
             {
                 Debug.Log("[WandManager] Spell recognized");
-                _caster.PrepareSpell(spellType);
+                SpellData spellData = GetSpell(spellType);
+                _caster.PrepareSpell(spellData);
                 Debug.Log(_wandState);
                 _wandState = WandState.Chambered;
                 Debug.Log(_wandState);
@@ -199,6 +192,17 @@ namespace _Project.Features.Spells.Scripts
             }
 
             return projectedSpellPoints;
+        }
+
+        private SpellData GetSpell(SpellType spellType)
+        {
+            foreach (var spell in spellLibrary)
+            {
+                if (spell.spellType == spellType) return spell;
+            }
+
+            Debug.Log("[WandManager] Spell not found in library.");
+            return null;
         }
     }
 }

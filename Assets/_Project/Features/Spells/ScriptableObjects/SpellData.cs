@@ -8,6 +8,6 @@ namespace _Project.Features.Spells.ScriptableObjects
     {
         public SpellType spellType;
         public GestureData gestureData;
-        public ProjectileData projectileData;
+        public GameObject spellPrefab;
     }
 }
