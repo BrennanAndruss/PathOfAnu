@@ -7,7 +7,7 @@ namespace _Project.Features.Spells.Scripts.Editor
     [CustomEditor(typeof(WandManager))]
     public class WandManagerEditor : UnityEditor.Editor
     {
-        private string _newTemplateName = "NewSpell";
+        private SpellType _selectedType;
 
         public override void OnInspectorGUI()
         {
@@ -20,9 +20,13 @@ namespace _Project.Features.Spells.Scripts.Editor
             EditorGUILayout.LabelField("Gesture Recording Tools", EditorStyles.boldLabel);
 
             // Check if we have template data to act upon
-            bool hasData = manager.CapturedProjectedPoints != null && manager.CapturedProjectedPoints.Length > 0;
+            bool hasData = manager.capturedProjectedPoints != null && manager.capturedProjectedPoints.Length > 0;
             
-            _newTemplateName = EditorGUILayout.TextField("Template Name", _newTemplateName);
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Spell Type", GUILayout.Width(100));
+            _selectedType = (SpellType)EditorGUILayout.EnumPopup(_selectedType);
+            
+            EditorGUILayout.EndHorizontal();
 
             // Disable the button if there's no data buffered
             GUI.enabled = hasData;
@@ -46,12 +50,12 @@ namespace _Project.Features.Spells.Scripts.Editor
         private void SaveTemplate(WandManager manager)
         {
             GestureData asset = ScriptableObject.CreateInstance<GestureData>();
-            asset.gestureName = _newTemplateName;
-            asset.points = manager.CapturedProjectedPoints;
+            // asset.spellType = _selectedType;
+            asset.points = manager.capturedProjectedPoints;
             asset.strokeCount = asset.points[^1].StrokeId;
 
             string directory = "Assets/Project/Spells/ScriptableObjects/Templates";
-            string path = $"{directory}/{_newTemplateName}.asset";
+            string path = $"{directory}/{_selectedType}Gesture.asset";
         
             // Ensure the directory exists
             System.IO.Directory.CreateDirectory(directory);
@@ -59,7 +63,7 @@ namespace _Project.Features.Spells.Scripts.Editor
             AssetDatabase.CreateAsset(asset, path);
             AssetDatabase.SaveAssets();
         
-            Debug.Log($"Successfully saved {_newTemplateName} to {path}");
+            Debug.Log($"Successfully saved {_selectedType}Gesture to {path}");
         
             // Clear the spell after saving
             manager.ClearCapturedGesture();
