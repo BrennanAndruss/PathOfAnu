@@ -1,7 +1,8 @@
+using _Project.Features.Spells.ScriptableObjects;
 using Unity.Mathematics;
 using UnityEngine;
 
-namespace Project.Spells.Scripts
+namespace _Project.Features.Spells.Scripts
 {
     public static class QProcessor
     {

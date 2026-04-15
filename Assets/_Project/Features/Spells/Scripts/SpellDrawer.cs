@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Project.Spells.Scripts
+namespace _Project.Features.Spells.Scripts
 {
     public class SpellDrawer : MonoBehaviour
     {

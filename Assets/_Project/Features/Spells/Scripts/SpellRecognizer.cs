@@ -1,22 +1,22 @@
 using System;
 using System.Collections.Generic;
+using _Project.Features.Spells.ScriptableObjects;
 using UnityEngine;
 
-namespace Project.Spells.Scripts
+namespace _Project.Features.Spells.Scripts
 {
     public class SpellRecognizer : MonoBehaviour
     {
         [SerializeField] private SpellSettings spellSettings;
-        [SerializeField] private GestureTemplate[] spellLibrary;
         private Dictionary<int, List<Gesture>> _gestureBins = new();
         private Dictionary<int, Gesture[]> _gestures = new();
         
         public Action<SpellType> OnSpellRecognized;
 
-        private void Awake()
+        public void SetGestures(GestureData[] gestures)
         {
             // Preprocess gestures at startup
-            foreach (var template in spellLibrary)
+            foreach (var template in gestures)
             {
                 Debug.Log($"[SpellRecognizer] Template: {template.name} {template.strokeCount}");
                 var gesture = new Gesture(template, spellSettings);
@@ -51,7 +51,7 @@ namespace Project.Spells.Scripts
             
             // Use the $Q Recognizer
             RecognitionResult result = QRecognizer.Classify(candidate, gestures, spellSettings);
-            Debug.Log("[SpellRecognizer] Result: " + result.Name + " " + result.SpellType + " " + result.Confidence);
+            Debug.Log("[SpellRecognizer] Result: " + result.SpellType + " " + result.Confidence);
             
             OnSpellRecognized?.Invoke(result.SpellType);
         }

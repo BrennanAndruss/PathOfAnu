@@ -1,17 +1,16 @@
+using _Project.Features.Spells.ScriptableObjects;
 using Unity.Mathematics;
 using UnityEngine;
 
-namespace Project.Spells.Scripts
+namespace _Project.Features.Spells.Scripts
 {
     public struct RecognitionResult
     {
-        public readonly string Name;
         public readonly SpellType SpellType;
         public readonly float Confidence;
 
-        public RecognitionResult(string name, SpellType type, float confidence)
+        public RecognitionResult(SpellType type, float confidence)
         {
-            Name = name;
             SpellType = type;
             Confidence = confidence;
         }
@@ -34,7 +33,7 @@ namespace Project.Spells.Scripts
             foreach (Gesture template in templates)
             {
                 float dist = GreedyCloudMatch(candidate, template, minDist, spellSettings);
-                Debug.Log($"[QRecognizer] Checking {template.Name}: {dist}");
+                Debug.Log($"[QRecognizer] Checking {template.SpellType}: {dist}");
                 if (dist < minDist)
                 {
                     minDist = dist;
@@ -43,9 +42,9 @@ namespace Project.Spells.Scripts
             }
             
             if (bestMatch == null) 
-                return new RecognitionResult("None", SpellType.Unknown, float.MaxValue);
+                return new RecognitionResult(SpellType.Unknown, float.MaxValue);
 
-            return new RecognitionResult(bestMatch.Name, bestMatch.SpellType, minDist);
+            return new RecognitionResult(bestMatch.SpellType, minDist);
         }
 
         /// <summary>

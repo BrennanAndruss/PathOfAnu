@@ -1,13 +1,12 @@
-namespace Project.Spells.Scripts
+namespace _Project.Features.Spells.Scripts
 {
     public enum SpellType
     {
-        Unknown,
-        Prototype,
         Fire,
         Water,
         Earth,
         Air,
         Electric,
+        Unknown,
     }
 }
