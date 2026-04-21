@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fbb09aedc35b7d46a87ac8836f3e286, type: 3}
   m_Name: FireSpell
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Features.Spells.ScriptableObjects.SpellData
-  spellType: 2
-  spellGesture: {fileID: 0}
-  spellProjectile: {fileID: 0}
+  spellType: 0
+  gestureData: {fileID: 11400000, guid: cf091fa41ac7fac41ab43ba17147e012, type: 2}
+  spellPrefab: {fileID: 1944997567104007226, guid: d3b2cf63191be2d4abd68617e8fdf0fe, type: 3}

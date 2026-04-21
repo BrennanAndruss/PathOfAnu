@@ -19,12 +19,12 @@ namespace _Project.Features.Spells.Scripts
             this.Lut = QProcessor.ConstructLut(Points, settings);
         }
 
-        public Gesture(GestureData template, SpellSettings settings)
+        public Gesture(SpellData spellData, SpellSettings settings)
         {
-            this.Name = template.name;
-            this.SpellType = template.spellType;
-            this.StrokeCount = template.strokeCount;
-            this.Points = QProcessor.Normalize(template.points, settings);
+            this.Name = spellData.spellType.ToString();
+            this.SpellType = spellData.spellType;
+            this.StrokeCount = spellData.gestureData.strokeCount;
+            this.Points = QProcessor.Normalize(spellData.gestureData.points, settings);
             this.Lut = QProcessor.ConstructLut(Points, settings);
         }
     }
