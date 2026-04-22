@@ -58,5 +58,10 @@ public class GrowVineTUT : MonoBehaviour
         }
 
         StartCoroutine(BeginGrowth()); // continue running this co-routine. 
+
+        // todo make it so it triggers when cast spell
+
+        // delete when done. 
+    
     }
 }
