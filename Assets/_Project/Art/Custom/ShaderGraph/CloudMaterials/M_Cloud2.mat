@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material 1
+  m_Name: M_Cloud2
   m_Shader: {fileID: -6465566751694194690, guid: 00f84f1f29276489290f9d6795e48ee1, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -84,7 +84,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_5617d046b9134f48afc7f99d347b74c4_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: cfa6d60f1f958ba46a105ca98716c259, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1395c3d0eb9e34f679acb552e85ccf68, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
