@@ -77,7 +77,7 @@ namespace _Project.Features.Spells.Scripts
             
             // Cast projectile
             SpellProjectile spellProjectile = _chamberedSpell.GetComponent<SpellProjectile>();
-            spellProjectile.Cast(tip.up);
+            spellProjectile.Cast(/*tip.up*/);
             if (oneShotSource || castSFX)
             {
                 oneShotSource.PlayOneShot(castSFX);

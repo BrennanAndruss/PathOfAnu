@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Project.Features.Spells.Scripts
 {
-    public class SpellProjectile : MonoBehaviour
+    public class SpellProjectile : Spell
     {
         [SerializeField] private SpellType spellType;
         
@@ -12,34 +12,20 @@ namespace _Project.Features.Spells.Scripts
         [SerializeField] private float launchForce = 15f;
         [SerializeField] private AudioClip sound;
 
-        private Rigidbody _rb;
-        private AudioSource _audioSource;
-
-        private void Awake()
-        {
-            Debug.Log("[SpellProjectile] " + gameObject.name + " Awake");
-            
-            _rb = GetComponent<Rigidbody>();
-            _audioSource = GetComponent<AudioSource>();
-            if (_audioSource)
-            {
-                _audioSource.playOnAwake = false;
-            }
-        }
-
-        public void Cast(Vector3 direction)
+        public override void Cast()
         {
             // Detach projectile from the wand
             transform.SetParent(null);
 
             // Cast projectile
-            _rb.isKinematic = false;
-            _rb.AddForce(direction * launchForce, ForceMode.Impulse);
+            Rb.isKinematic = false;
+            var direction = transform.forward; // check this (was coming from spellcaster before)
+            Rb.AddForce(direction * launchForce, ForceMode.Impulse);
             
             // Play projectile SFX
-            if (_audioSource && sound)
+            if (AudioSource && sound)
             {
-                _audioSource.PlayOneShot(sound);
+                AudioSource.PlayOneShot(sound);
             }
             
             // Start projectile lifetime
