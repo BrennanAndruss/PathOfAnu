@@ -8,6 +8,9 @@ TagManager:
   - Spell
   - CandleFire
   - Bowl-Water
+  - Grass
+  - Tree
+  - Flowers
   layers:
   - Default
   - TransparentFX
