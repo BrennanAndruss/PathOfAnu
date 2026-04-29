@@ -48,8 +48,6 @@ Desktop.ini
 heu_session.txt
 heu_settings.ini
 /HoudiniEngineAssetCache/
-*.hip
-*.hipnc
 
 # ========== Unity Asset Store Tools ==========
 /Assets/AssetStoreTools*
@@ -59,7 +57,6 @@ heu_settings.ini
 *.aab
 *.xcarchive
 *.ipa
-TempAssembly.dll
 
 # ========== Custom: Ignore TMP examples ==========
 Assets/Plugins/Tools/TextMesh Pro/Examples & Extras/

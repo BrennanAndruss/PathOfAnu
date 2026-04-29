@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class etRefreshRate : MonoBehaviour
+public class SetRefreshRate : MonoBehaviour
 {
     void Start()
     {
