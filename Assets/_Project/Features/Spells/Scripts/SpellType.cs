@@ -7,6 +7,10 @@ namespace _Project.Features.Spells.Scripts
         Earth,
         Air,
         Electric,
+        Virgo,
+        Leo,
+        Aquarius,
+        Pisces,
         Unknown,
     }
 }
