@@ -1367,7 +1367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 86764299}
   - component: {fileID: 86764300}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: projectilesfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5414,6 +5414,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 387553026}
     m_Modifications:
+    - target: {fileID: 11379944102081989, guid: 9c587fed9358e40b3b2d3db251011bf3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 51332717363865529, guid: 9c587fed9358e40b3b2d3db251011bf3, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.17
@@ -5445,6 +5449,22 @@ PrefabInstance:
     - target: {fileID: 891481178353728334, guid: 9c587fed9358e40b3b2d3db251011bf3, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618136287562870250, guid: 9c587fed9358e40b3b2d3db251011bf3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882533439033922802, guid: 9c587fed9358e40b3b2d3db251011bf3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3463245411416327070, guid: 9c587fed9358e40b3b2d3db251011bf3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799587834337291800, guid: 9c587fed9358e40b3b2d3db251011bf3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3928025131930424888, guid: 9c587fed9358e40b3b2d3db251011bf3, type: 3}
       propertyPath: m_LocalScale.x
@@ -5519,8 +5539,16 @@ PrefabInstance:
       value: WandVFX
       objectReference: {fileID: 0}
     - target: {fileID: 4750110049980421989, guid: 9c587fed9358e40b3b2d3db251011bf3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750110049980421989, guid: 9c587fed9358e40b3b2d3db251011bf3, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4852655538042969137, guid: 9c587fed9358e40b3b2d3db251011bf3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5079937537328101000, guid: 9c587fed9358e40b3b2d3db251011bf3, type: 3}
       propertyPath: m_LocalScale.x
@@ -24720,7 +24748,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1846914002}
   - component: {fileID: 1846914003}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: castingsfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
