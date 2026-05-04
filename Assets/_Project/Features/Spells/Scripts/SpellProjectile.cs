@@ -5,8 +5,6 @@ namespace _Project.Features.Spells.Scripts
 {
     public class SpellProjectile : Spell
     {
-        [SerializeField] private SpellType spellType;
-        
         [Header("Projectile Settings")]
         [SerializeField] private float lifetime = 5f;
         [SerializeField] private float launchForce = 15f;

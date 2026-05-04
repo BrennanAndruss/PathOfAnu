@@ -60,7 +60,7 @@ namespace _Project.Features.Spells.Scripts
             _chamberedSpell.transform.localRotation = Quaternion.identity;
             Debug.Log("[SpellCaster] Chambered spell: " + _chamberedType + " " + _chamberedSpell.name);
             
-            trajectory.enabled = true;
+            // trajectory.enabled = true;
 
             PlayWaitingSFX();
         }
