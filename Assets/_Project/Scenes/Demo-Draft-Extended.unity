@@ -27095,6 +27095,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera Rig
       objectReference: {fileID: 0}
+    - target: {fileID: 3562787986898399083, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
+      propertyPath: spellLibrary.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3562787986898399083, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
+      propertyPath: 'spellLibrary.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e96846b971ce3a945935d34b25cdf768, type: 2}
     - target: {fileID: 4134788382795187639, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 571.8229

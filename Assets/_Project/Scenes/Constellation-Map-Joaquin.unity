@@ -16414,7 +16414,7 @@ Transform:
   m_GameObject: {fileID: 310410738}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.9996877, z: -0, w: -0.024991352}
-  m_LocalPosition: {x: 66.9, y: 0, z: 19.4}
+  m_LocalPosition: {x: 85.4, y: 0, z: 30.7}
   m_LocalScale: {x: 1.6540998, y: 1.6541, z: 1.6540998}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19681,7 +19681,7 @@ GameObject:
   m_Component:
   - component: {fileID: 522686721}
   m_Layer: 0
-  m_Name: Quest1_3
+  m_Name: Quest1_3_Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25456,7 +25456,7 @@ GameObject:
   - component: {fileID: 762045628}
   - component: {fileID: 762045627}
   m_Layer: 0
-  m_Name: grass_tool_1_0_bakedHDA (1)
+  m_Name: grass01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42687,7 +42687,7 @@ GameObject:
   - component: {fileID: 1133182242}
   - component: {fileID: 1133182241}
   m_Layer: 0
-  m_Name: grass_tool_1_1_bakedHDA (1)
+  m_Name: grass03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42914,7 +42914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _monoscopic: 0
   _sharpenType: 0
-  _enableDynamicResolution: 0
+  _enableDynamicResolution: 1
   minDynamicResolutionScale: 1
   maxDynamicResolutionScale: 1
   quest2MinDynamicResolutionScale: 0.7
@@ -54737,7 +54737,7 @@ GameObject:
   - component: {fileID: 1334060172}
   - component: {fileID: 1334060171}
   m_Layer: 0
-  m_Name: grass_tool_1_0_bakedHDA (2)
+  m_Name: grass02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58377,7 +58377,7 @@ GameObject:
   - component: {fileID: 1518120459}
   m_Layer: 0
   m_Name: stone
-  m_TagString: Untagged
+  m_TagString: WaterRuine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70755,7 +70755,7 @@ GameObject:
   - component: {fileID: 1550829912}
   - component: {fileID: 1550829913}
   m_Layer: 0
-  m_Name: Quest1_1
+  m_Name: Quest1_1_Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82807,6 +82807,7 @@ Transform:
   - {fileID: 787502730}
   - {fileID: 1967887982}
   - {fileID: 310410739}
+  - {fileID: 1824777767}
   - {fileID: 543450651921033684}
   - {fileID: 2608845255785463585}
   - {fileID: 905493332}
@@ -84698,7 +84699,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1812376425}
   m_Layer: 0
-  m_Name: Quest1_2
+  m_Name: Quest1_2_Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84936,6 +84937,96 @@ MonoBehaviour:
   m_EditorClassIdentifier: HoudiniEngineUnity::HoudiniEngineUnity.HEU_HoudiniAssetRoot
   _houdiniAsset: {fileID: 1443835903}
   _bakeTargets: []
+--- !u!1 &1824777766
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1824777767}
+  - component: {fileID: 1824777769}
+  - component: {fileID: 1824777768}
+  m_Layer: 0
+  m_Name: MystricalTree03 (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1824777767
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824777766}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.55288714, z: -0, w: -0.83325624}
+  m_LocalPosition: {x: 15.6, y: 0, z: 57.6}
+  m_LocalScale: {x: 1.6540998, y: 1.6541, z: 1.6540998}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1677037302}
+  m_LocalEulerAnglesHint: {x: 0, y: -292.86902, z: 0}
+--- !u!33 &1824777768
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824777766}
+  m_Mesh: {fileID: 4300000, guid: d039caaf622f642da8aa1c89863547e5, type: 2}
+--- !u!23 &1824777769
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824777766}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 8125c9b5bdfb740ec9b4ce78f645428f, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1840472877
 GameObject:
   m_ObjectHideFlags: 0
@@ -91129,7 +91220,7 @@ GameObject:
   - component: {fileID: 7541318362305060246}
   m_Layer: 0
   m_Name: stone
-  m_TagString: Untagged
+  m_TagString: WaterRuine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103034,7 +103125,7 @@ GameObject:
   - component: {fileID: 1278470006138930305}
   m_Layer: 0
   m_Name: rock
-  m_TagString: Untagged
+  m_TagString: EarthRuine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

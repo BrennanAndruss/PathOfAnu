@@ -11,6 +11,8 @@ TagManager:
   - Grass
   - Tree
   - Flowers
+  - WaterRuine
+  - EarthRuine
   layers:
   - Default
   - TransparentFX

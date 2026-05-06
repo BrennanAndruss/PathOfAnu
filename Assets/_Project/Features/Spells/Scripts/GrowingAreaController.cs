@@ -2,43 +2,51 @@ using UnityEngine;
 
 public class GrowingAreaController : MonoBehaviour
 {
-    // Purpose Statement: Controls geometry instances, vfx, and counting variables [...] 
-    // aswell managing collision detection / interactables
+    [Header("Geometry To Activate")]
+    [SerializeField] private GameObject[] growingAreas;
 
-    [SerializeField] public GameObject[] growingAreas; // 3 areas-- get list of emmebdded children 
-    [SerializeField] public GameObject growingSpell; // 3 growing vfx areas
+    [Header("VFX")]
+    [SerializeField] private GameObject growingSpellVFX;
 
-    //[SerializeField] public SpellType spellType; // each ruine has a dedicated spell 
-    [SerializeField] public int healedAmount = 0;
-    public int instanceLength = 0; 
+    [Header("State")]
+    [SerializeField] private bool activated = false;
 
-
-    [SerializeField] public bool healed = false; 
-    [SerializeField] public bool activated = false;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        // step = growingAreas.Length() / 3; 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Make sure everything starts hidden
+        foreach (GameObject area in growingAreas)
+        {
+            if (area != null)
+                area.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        //if (other.CompareTag("Virgo")) // need magic type reference
-        //{
-            for (int i = 0 ; i < instanceLength ; i ++)
-            {
-                growingAreas[i].gameObject.SetActive(true);
-            }
-            
-        //}
+        if (activated)
+            return;
+
+        // TEMP: accept any collider (we'll filter later)
+        ActivateGrowthArea();
     }
 
+    private void ActivateGrowthArea()
+    {
+        activated = true;
 
+        // Turn on all geometry
+        foreach (GameObject area in growingAreas)
+        {
+            if (area != null)
+                area.SetActive(true);
+        }
+
+        // Spawn VFX
+        if (growingSpellVFX != null)
+        {
+            Instantiate(growingSpellVFX, transform.position, Quaternion.identity);
+        }
+
+        Debug.Log($"{gameObject.name} activated.");
+    }
 }
