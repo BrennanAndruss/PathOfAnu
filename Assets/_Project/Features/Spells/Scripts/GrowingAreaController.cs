@@ -10,22 +10,34 @@ public class GrowingAreaController : MonoBehaviour
 
     //[SerializeField] public SpellType spellType; // each ruine has a dedicated spell 
     [SerializeField] public int healedAmount = 0;
+    public int instanceLength = 0; 
+
 
     [SerializeField] public bool healed = false; 
     [SerializeField] public bool activated = false;
-
-
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        // step = growingAreas.Length() / 3; 
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //if (other.CompareTag("Virgo")) // need magic type reference
+        //{
+            for (int i = 0 ; i < instanceLength ; i ++)
+            {
+                growingAreas[i].gameObject.SetActive(true);
+            }
+            
+        //}
     }
 
 
