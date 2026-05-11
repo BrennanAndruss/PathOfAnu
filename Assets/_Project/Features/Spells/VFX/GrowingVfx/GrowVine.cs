@@ -7,11 +7,11 @@ public class GrowVineTUT : MonoBehaviour
     public List<MeshRenderer> growVinesMeshes;
     public float timeToGrow = 5f;
 
-    [Range(0, 1)]
-    public float minGrow = 1f;
+    public GameObject firefliesVFX;
+    public GameObject earthSigilVFX;
 
-    [Range(0, 1)]
-    public float maxGrow = 0f;
+    [Range(0, 1)] public float minGrow = 1f;
+    [Range(0, 1)] public float maxGrow = 0f;
 
     private List<Material> growVinesMaterials = new List<Material>();
 
@@ -25,27 +25,27 @@ public class GrowVineTUT : MonoBehaviour
             {
                 Material mat = mats[j];
 
-                if (mat.HasProperty("Grow_")) // in the list of growing objects, check if it has a grow parameter that we use
+                if (mat.HasProperty("Grow_"))
                 {
                     mat.SetFloat("Grow_", minGrow);
-                    growVinesMaterials.Add(mat); //if so add to the list we are interpolating the grow variable through time
+                    growVinesMaterials.Add(mat);
                 }
             }
         }
 
-        StartCoroutine(BeginGrowth()); // call coroutine on all meshes before game starts. 
+        StartCoroutine(BeginGrowth());
     }
 
     IEnumerator BeginGrowth()
     {
-        // Wait until the first frame has rendered
-        yield return null; 
+        yield return null;
 
         float elapsed = 0f;
 
         while (elapsed < timeToGrow)
         {
             elapsed += Time.deltaTime;
+
             float t = Mathf.Clamp01(elapsed / timeToGrow);
             float growValue = Mathf.Lerp(minGrow, maxGrow, t);
 
@@ -57,11 +57,13 @@ public class GrowVineTUT : MonoBehaviour
             yield return null;
         }
 
-        StartCoroutine(BeginGrowth()); // continue running this co-routine. 
+        // Ensure final value is exact
+        for (int i = 0; i < growVinesMaterials.Count; i++)
+        {
+            growVinesMaterials[i].SetFloat("Grow_", maxGrow);
+        }
 
-        // todo make it so it triggers when cast spell
-
-        // delete when done. 
-    
+        // Destroy after finishing
+        Destroy(gameObject);
     }
 }

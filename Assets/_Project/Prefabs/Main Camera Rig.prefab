@@ -1974,7 +1974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Meta.XR.BuildingBlocks::Meta.XR.BuildingBlocks.BuildingBlock
   blockId: 5817f7c0-f2a5-45f9-a5ca-64264e0166e8
-  instanceId: 5f3e04af-fca6-4c45-b3c7-97f51a717973
+  instanceId: 71a0ca81-9417-494c-ad85-f16c2c0b00d5
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -3553,7 +3553,7 @@ GameObject:
   - component: {fileID: 7708665350561503744}
   - component: {fileID: 9117463525771220196}
   m_Layer: 8
-  m_Name: Camera Rig
+  m_Name: Main Camera Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3589,7 +3589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Meta.XR.BuildingBlocks::Meta.XR.BuildingBlocks.BuildingBlock
   blockId: e47682b9-c270-40b1-b16d-90b627a5ce1b
-  instanceId: 90477fac-c3b4-4546-aac7-8811dfdd513d
+  instanceId: 81d9de67-0082-4679-b0b7-5a30ae27b350
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -8660,7 +8660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Meta.XR.BuildingBlocks::Meta.XR.BuildingBlocks.BuildingBlock
   blockId: 5817f7c0-f2a5-45f9-a5ca-64264e0166e8
-  instanceId: e9aa09b1-4af2-4be4-81ee-069e11857376
+  instanceId: 55bd7848-1756-4f9e-b44e-b5bfa5fed77d
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 
@@ -15124,6 +15124,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5801245061754409418, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
+      propertyPath: _jumpForce
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5801245061754409418, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
       propertyPath: _playerEyes
       value: 
       objectReference: {fileID: 7535980958334334817}
@@ -15131,6 +15135,10 @@ PrefabInstance:
       propertyPath: _playerOrigin
       value: 
       objectReference: {fileID: 4134788382795187639}
+    - target: {fileID: 5801245061754409418, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
+      propertyPath: _crouchHeightOffset
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5836776481472828453, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -17881,7 +17889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Meta.XR.BuildingBlocks::Meta.XR.BuildingBlocks.BuildingBlock
   blockId: 81f55626-5fad-45e9-a1df-184f330da7ba
-  instanceId: 2696c3f0-aa1e-4452-865a-47f1a388e19c
+  instanceId: c0e10a9b-eafd-4148-a034-a6bba22671ee
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 2063f481-1b63-4eda-9ee8-a00df98536bc
