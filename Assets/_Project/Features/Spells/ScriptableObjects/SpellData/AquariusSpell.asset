@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Features.Spells.ScriptableObjects.SpellData
   spellType: 7
   gestureData: {fileID: 11400000, guid: 5a4fb65df40d9674ba4fa8a6097893c0, type: 2}
-  spellPrefab: {fileID: 0}
+  spellPrefab: {fileID: 3138743879733721552, guid: 1539db1a1d81d4dcfad5383f769ddbd1, type: 3}
