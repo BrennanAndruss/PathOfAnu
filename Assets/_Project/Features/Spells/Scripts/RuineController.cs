@@ -1,38 +1,77 @@
-// ...existing code...
-using UnityEngine;
+using _Project.Code.Scripts.Interactables;
 using _Project.Features.Spells.Scripts;
+using UnityEngine;
+using UnityEngine.Events;
 
-public class RuineController : MonoBehaviour
+public class RuineController : Interactable
 {
     [Header("Rune Requirement")]
-    [SerializeField] private SpellType requiredSpell;
+    [Tooltip("Set required spell here. Mapped to Interactable.requiredType at Awake.")]
+    [SerializeField] private SpellType requiredSpell = SpellType.Unknown;
 
-    [Header("State")]
-    [SerializeField] private bool activated;
-
-    [Header("VFX")]
+    [Header("VFX / SFX")]
     [SerializeField] private GameObject correctSpellVFX;
     [SerializeField] private GameObject incorrectSpellVFX;
+    [SerializeField] private AudioClip successSfx;
+    [SerializeField] private AudioClip failSfx;
+    [SerializeField] private bool disableAfterActivation = true;
 
-    private void OnTriggerEnter(Collider other)
+    [Header("State (debug)")]
+    [SerializeField] private bool activated;
+
+    [Header("Events")]
+    public UnityEvent onActivated;
+    public UnityEvent onFailed;
+
+    private AudioSource _audioSource;
+
+    private void Awake()
+    {
+        requiredType = requiredSpell;
+        _audioSource = GetComponent<AudioSource>();
+    }
+
+    protected override void OnInteract(Spell spell)
     {
         if (activated) return;
-
-        // use the Spell base type and its accessor
-        Spell spell = other.GetComponent<Spell>();
         if (spell == null) return;
 
-        if (spell.GetSpellType() == requiredSpell)
+        if (requiredType != SpellType.Unknown && spell.GetSpellType() != requiredType)
         {
-            if (correctSpellVFX != null)
-                Instantiate(correctSpellVFX, transform.position, Quaternion.identity);
+            SpawnVfx(incorrectSpellVFX);
+            PlaySound(failSfx);
+            onFailed?.Invoke();
+            return;
+        }
 
-            activated = true;
-        }
-        else
+        activated = true;
+
+        SpawnVfx(correctSpellVFX);
+        PlaySound(successSfx);
+        onActivated?.Invoke();
+
+        if (disableAfterActivation)
         {
-            if (incorrectSpellVFX != null)
-                Instantiate(incorrectSpellVFX, transform.position, Quaternion.identity);
+            Collider col = GetComponent<Collider>();
+            if (col != null)
+                col.enabled = false;
         }
+    }
+
+    private void SpawnVfx(GameObject prefab)
+    {
+        if (prefab == null) return;
+
+        Instantiate(prefab, transform.position, Quaternion.identity);
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (clip == null) return;
+
+        if (_audioSource != null)
+            _audioSource.PlayOneShot(clip);
+        else
+            AudioSource.PlayClipAtPoint(clip, transform.position);
     }
 }
