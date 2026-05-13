@@ -1,7 +1,10 @@
+using _Project.Features.Spells.Scripts;
 using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
+    [SerializeField] private WandManager wandManager;
+    
     [Header("Quest State")]
     [SerializeField] private int questpoint = 1;
 
@@ -89,6 +92,7 @@ public class QuestManager : MonoBehaviour
         questpoint = 2;
 
         Debug.Log("Quest 1 complete. Moving to Quest 2.");
+        wandManager.ActivateSpell(SpellType.Virgo);
     }
 
     private void SetGrowingAreasEnabled(bool enabled)
