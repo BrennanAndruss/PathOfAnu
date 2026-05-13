@@ -2,28 +2,104 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
-    // Purpose Statement: Quest Manager oversees variables and schedules events to happen.
-    [SerializeField] private int questpoint = 0; // quest: 0 (Tutorial), 1, 2, 3 
+    [Header("Quest State")]
+    [SerializeField] private int questpoint = 1;
 
-    
-    // Quest 1: State Variables 
-    [SerializeField] public GameObject[] growingAreas; // 3 areas
-    [SerializeField] public int ruinesActivated = 0;
-    [SerializeField] public int growingAreasHealed = 0;
-    [SerializeField] public GameObject VirgoUI;
-    // Quest 2: State Variables 
+    [Header("Quest 1 Objects")]
+    [SerializeField] private RuineController[] ruines;
+    [SerializeField] private GrowingAreaController[] growingAreas;
+    [SerializeField] private GameObject virgoUI;
 
-    // Quest 3: State Variables 
+    [Header("Quest 1 Progress")]
+    [SerializeField] private int ruinesActivated = 0;
+    [SerializeField] private int growingAreasHealed = 0;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [Header("Quest 1 Gates")]
+    [SerializeField] private bool ruinesComplete = false;
+    [SerializeField] private bool growingAreasComplete = false;
+
+    private void Start()
     {
-        
+        ruinesActivated = 0;
+        growingAreasHealed = 0;
+
+        if (virgoUI != null)
+            virgoUI.SetActive(false);
+
+        SetGrowingAreasEnabled(false);
+
+        foreach (RuineController ruine in ruines)
+        {
+            if (ruine == null) continue;
+
+            ruine.onActivated.AddListener(OnRuineActivated);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-        
+        foreach (RuineController ruine in ruines)
+        {
+            if (ruine == null) continue;
+
+            ruine.onActivated.RemoveListener(OnRuineActivated);
+        }
+    }
+
+    public void  OnRuineActivated()
+    {
+        if (ruinesComplete) return;
+
+        ruinesActivated++;
+
+        if (ruinesActivated >= ruines.Length)
+        {
+            CompleteRuinesStep();
+        }
+    }
+
+    private void CompleteRuinesStep()
+    {
+        ruinesComplete = true;
+
+        if (virgoUI != null)
+            virgoUI.SetActive(true);
+
+        SetGrowingAreasEnabled(true);
+
+        Debug.Log("Quest 1: All ruines activated. Growing areas unlocked.");
+    }
+
+    public void OnGrowingAreaHealed()
+    {
+        if (!ruinesComplete) return;
+        if (growingAreasComplete) return;
+
+        growingAreasHealed++;
+
+        if (growingAreasHealed >= growingAreas.Length)
+        {
+            CompleteGrowingAreasStep();
+        }
+    }
+
+    private void CompleteGrowingAreasStep()
+    {
+        growingAreasComplete = true;
+        questpoint = 2;
+
+        Debug.Log("Quest 1 complete. Moving to Quest 2.");
+    }
+
+    private void SetGrowingAreasEnabled(bool enabled)
+    {
+        foreach (GrowingAreaController area in growingAreas)
+        {
+            if (area == null) continue;
+
+            Collider col = area.GetComponent<Collider>();
+            if (col != null)
+                col.enabled = enabled;
+        }
     }
 }

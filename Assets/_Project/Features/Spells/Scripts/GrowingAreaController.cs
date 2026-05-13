@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class GrowingAreaController : Interactable
 {
+    [SerializeField] private QuestManager questManager;
     [Header("Geometry To Activate")]
     [SerializeField] private GameObject[] growingAreas;
     [SerializeField] public int state = 0; 
@@ -52,7 +53,13 @@ public class GrowingAreaController : Interactable
         else if (state == 2)
         {
             growingAreas[state].SetActive(true); 
-            healed = true; 
+            healed = true;
+            
+            // growing area done
+            if (questManager != null)
+            {
+                questManager.OnGrowingAreaHealed();
+            }
         }
         else
         {
