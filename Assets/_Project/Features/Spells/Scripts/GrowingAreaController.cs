@@ -30,7 +30,6 @@ public class GrowingAreaController : Interactable
                 area.SetActive(false);
         }
     }
-
     protected override void OnInteract(Spell spell)
     {
         // if other is spelltype == virgo
