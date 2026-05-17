@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 571075961973374422}
   - component: {fileID: 1056756677968831221}
   - component: {fileID: 7287682191282183272}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BaseProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,6 +193,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Features.Spells.Scripts.SpellProjectile
   spellType: 0
+  activeSound: {fileID: 0}
+  destroySound: {fileID: 0}
   lifetime: 5
   launchForce: 15
   sound: {fileID: 0}

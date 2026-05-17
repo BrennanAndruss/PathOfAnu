@@ -54,7 +54,7 @@ namespace _Project.Features.Spells.Scripts.Editor
             asset.points = manager.capturedProjectedPoints;
             asset.strokeCount = asset.points[^1].StrokeId;
 
-            string directory = "Assets/Project/Spells/ScriptableObjects/Templates";
+            string directory = "Assets/_Project/Features/Spells/ScriptableObjects/GestureData";
             string path = $"{directory}/{_selectedType}Gesture.asset";
         
             // Ensure the directory exists

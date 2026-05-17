@@ -79,7 +79,11 @@ Material:
     - _Occlusion: 1
     - _QueueControl: 0
     - _QueueOffset: 0
+<<<<<<< HEAD
     - _Smoothness: 0.212
+=======
+    - _Smoothness: 0.03
+>>>>>>> 08234a748cc470c13f8379b47de1f89c5f073396
     - _XRMotionVectorsPass: 1
     m_Colors:
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}

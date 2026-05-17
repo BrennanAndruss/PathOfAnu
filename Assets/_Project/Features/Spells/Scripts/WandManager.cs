@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using _Project.Features.Spells.ScriptableObjects;
+using UnityEditor.Searcher;
 using UnityEngine;
 
 namespace _Project.Features.Spells.Scripts
@@ -22,6 +24,7 @@ namespace _Project.Features.Spells.Scripts
         private Quaternion _projectionRotation;
 
         [SerializeField] private SpellData[] spellLibrary;
+        private Dictionary<SpellType, bool> _isSpellActive = new();
         
         // Spell script references
         private SpellDrawer _drawer;
@@ -42,6 +45,18 @@ namespace _Project.Features.Spells.Scripts
             
             // Pass down gesture templates to SpellRecognizer
             _recognizer.SetGestures(spellLibrary);
+            
+            // Initialize active spell dictionary
+            foreach (SpellType spell in Enum.GetValues(typeof(SpellType)))
+            {
+                _isSpellActive.Add(spell, false);
+            }
+            
+            // Activate base spells
+            ActivateSpell(SpellType.Air);
+            ActivateSpell(SpellType.Earth);
+            ActivateSpell(SpellType.Fire);
+            ActivateSpell(SpellType.Water);
         }
 
         private void OnEnable()
@@ -152,6 +167,10 @@ namespace _Project.Features.Spells.Scripts
             {
                 Debug.Log("[WandManager] Spell recognized");
                 SpellData spellData = GetSpell(spellType);
+                
+                // Cast spell if the player has unlocked that spell
+                if (!_isSpellActive[spellType]) return;
+                
                 _caster.PrepareSpell(spellData);
                 Debug.Log(_wandState);
                 _wandState = WandState.Chambered;
@@ -203,6 +222,11 @@ namespace _Project.Features.Spells.Scripts
 
             Debug.Log("[WandManager] Spell not found in library.");
             return null;
+        }
+
+        public void ActivateSpell(SpellType spellType)
+        {
+            _isSpellActive[spellType] = true;
         }
     }
 }

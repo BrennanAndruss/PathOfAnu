@@ -8,7 +8,15 @@ TagManager:
   - Spell
   - CandleFire
   - Bowl-Water
+<<<<<<< HEAD
   - Interactable
+=======
+  - Grass
+  - Tree
+  - Flowers
+  - WaterRuine
+  - EarthRuine
+>>>>>>> 08234a748cc470c13f8379b47de1f89c5f073396
   layers:
   - Default
   - TransparentFX
@@ -17,8 +25,8 @@ TagManager:
   - Water
   - UI
   - Interactables
-  - 
-  - 
+  - Projectile
+  - Player
   - 
   - 
   - 

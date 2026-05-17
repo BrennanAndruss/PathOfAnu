@@ -3,43 +3,46 @@ using UnityEngine;
 
 namespace _Project.Features.Spells.Scripts
 {
-    public class SpellProjectile : MonoBehaviour
+    public class SpellProjectile : Spell
     {
-        [SerializeField] private SpellType spellType;
-        
         [Header("Projectile Settings")]
         [SerializeField] private float lifetime = 5f;
         [SerializeField] private float launchForce = 15f;
         [SerializeField] private AudioClip sound;
 
-        private Rigidbody _rb;
-        private AudioSource _audioSource;
-
-        private void Awake()
+        private Collider _collider;
+        
+        protected override void Awake()
         {
-            Debug.Log("[SpellProjectile] " + gameObject.name + " Awake");
+            Debug.Log("[SpellProjectile] " + gameObject.name + " created.");
             
-            _rb = GetComponent<Rigidbody>();
-            _audioSource = GetComponent<AudioSource>();
-            if (_audioSource)
+            // Disable collider to ignore collisions when chambered
+            _collider = GetComponent<Collider>();
+            _collider.enabled = false;
+            
+            Rb = GetComponent<Rigidbody>();
+            Rb.isKinematic = true;
+            AudioSource = GetComponent<AudioSource>();
+            if (AudioSource)
             {
-                _audioSource.playOnAwake = false;
+                AudioSource.playOnAwake = false;
             }
         }
-
-        public void Cast(Vector3 direction)
+        
+        public override void Cast()
         {
             // Detach projectile from the wand
             transform.SetParent(null);
 
             // Cast projectile
-            _rb.isKinematic = false;
-            _rb.AddForce(direction * launchForce, ForceMode.Impulse);
+            _collider.enabled = true;
+            Rb.isKinematic = false;
+            Rb.AddForce(transform.forward * launchForce, ForceMode.Impulse);
             
             // Play projectile SFX
-            if (_audioSource && sound)
+            if (AudioSource && sound)
             {
-                _audioSource.PlayOneShot(sound);
+                AudioSource.PlayOneShot(sound);
             }
             
             // Start projectile lifetime
@@ -48,12 +51,17 @@ namespace _Project.Features.Spells.Scripts
 
         public void OnCollisionEnter(Collision collision)
         {
+            // Ignore collisions when the spell is chambered
+            if (!_collider.enabled) return;
+            
+            // Ignore collisions with the player or wand
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Player")) return;
+            
             // Handle spell impact
             // rotation = normal vector to surface
             // Instantiate(impactEffect, transform.position, rotation)
             
-            // need to handle collision with wand...
-            // Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 }

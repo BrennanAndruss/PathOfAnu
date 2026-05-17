@@ -60,7 +60,7 @@ namespace _Project.Features.Spells.Scripts
             _chamberedSpell.transform.localRotation = Quaternion.identity;
             Debug.Log("[SpellCaster] Chambered spell: " + _chamberedType + " " + _chamberedSpell.name);
             
-            trajectory.enabled = true;
+            // trajectory.enabled = true;
 
             PlayWaitingSFX();
         }
@@ -77,7 +77,7 @@ namespace _Project.Features.Spells.Scripts
             
             // Cast projectile
             SpellProjectile spellProjectile = _chamberedSpell.GetComponent<SpellProjectile>();
-            spellProjectile.Cast(tip.up);
+            spellProjectile.Cast(/*tip.up*/);
             if (oneShotSource || castSFX)
             {
                 oneShotSource.PlayOneShot(castSFX);
