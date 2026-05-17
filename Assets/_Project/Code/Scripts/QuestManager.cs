@@ -20,6 +20,8 @@ public class QuestManager : MonoBehaviour
     [Header("Quest 1 Gates")]
     [SerializeField] private bool ruinesComplete = false;
     [SerializeField] private bool growingAreasComplete = false;
+    [SerializeField] private bool quest1completed = false;
+
 
     private void Start()
     {
@@ -49,6 +51,7 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    // Main Interface for Ruine's to ping Manager
     public void  OnRuineActivated()
     {
         if (ruinesComplete) return;
