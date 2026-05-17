@@ -3,30 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags:
-  - SamplesInfoPanel
-  - Spell
-  - CandleFire
-  - Bowl-Water
-<<<<<<< HEAD
-  - Interactable
-=======
-  - Grass
-  - Tree
-  - Flowers
-  - WaterRuine
-  - EarthRuine
->>>>>>> 08234a748cc470c13f8379b47de1f89c5f073396
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Overlay UI
+  - 
   - Water
   - UI
-  - Interactables
-  - Projectile
-  - Player
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -56,10 +43,3 @@ TagManager:
     locked: 0
   m_RenderingLayers:
   - Default
-  - Light Layer 1
-  - Light Layer 2
-  - Light Layer 3
-  - Light Layer 4
-  - Light Layer 5
-  - Light Layer 6
-  - Light Layer 7
