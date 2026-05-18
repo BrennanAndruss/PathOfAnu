@@ -49,24 +49,26 @@ namespace _Project.Features.Spells.Scripts.Editor
 
         private void SaveTemplate(WandManager manager)
         {
-            GestureData asset = ScriptableObject.CreateInstance<GestureData>();
-            // asset.spellType = _selectedType;
-            asset.points = manager.capturedProjectedPoints;
-            asset.strokeCount = asset.points[^1].StrokeId;
-
-            string directory = "Assets/_Project/Features/Spells/ScriptableObjects/GestureData";
-            string path = $"{directory}/{_selectedType}Gesture.asset";
-        
-            // Ensure the directory exists
-            System.IO.Directory.CreateDirectory(directory);
-
-            AssetDatabase.CreateAsset(asset, path);
-            AssetDatabase.SaveAssets();
-        
-            Debug.Log($"Successfully saved {_selectedType}Gesture to {path}");
-        
-            // Clear the spell after saving
-            manager.ClearCapturedGesture();
+            Debug.Log("update for multi-stroke later...");
+            
+            // GestureData asset = ScriptableObject.CreateInstance<GestureData>();
+            // // asset.spellType = _selectedType;
+            // asset.points = manager.capturedProjectedPoints;
+            // asset.strokeCount = asset.points[^1].StrokeId;
+            //
+            // string directory = "Assets/_Project/Features/Spells/ScriptableObjects/GestureData";
+            // string path = $"{directory}/{_selectedType}Gesture.asset";
+            //
+            // // Ensure the directory exists
+            // System.IO.Directory.CreateDirectory(directory);
+            //
+            // AssetDatabase.CreateAsset(asset, path);
+            // AssetDatabase.SaveAssets();
+            //
+            // Debug.Log($"Successfully saved {_selectedType}Gesture to {path}");
+            //
+            // // Clear the spell after saving
+            // manager.ClearCapturedGesture();
         }
     }
 }
