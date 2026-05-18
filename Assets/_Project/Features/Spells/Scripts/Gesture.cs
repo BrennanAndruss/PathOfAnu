@@ -24,7 +24,7 @@ namespace _Project.Features.Spells.Scripts
             this.Name = spellData.spellType.ToString();
             this.SpellType = spellData.spellType;
             this.StrokeCount = spellData.gestureData.strokeCount;
-            this.Points = QProcessor.Normalize(spellData.gestureData.points, settings);
+            this.Points = QProcessor.Normalize(spellData.gestureData.Points, settings);
             this.Lut = QProcessor.ConstructLut(Points, settings);
         }
     }
