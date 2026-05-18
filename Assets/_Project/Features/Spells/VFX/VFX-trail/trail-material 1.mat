@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: trail-material
+  m_Name: trail-material 1
   m_Shader: {fileID: -6465566751694194690, guid: daf4ae96581c93342bdd89278b92334d, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -42,13 +42,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DissolveScale: 34.41
+    - _DissolveScale: 35
     - _QueueControl: 0
     - _QueueOffset: 0
     - _XRMotionVectorsPass: 1
     m_Colors:
-    - _Color01: {r: 1.7207954, g: 0.30844426, b: 0.30844426, a: 1}
-    - _Color02: {r: 0.1037735, g: 0.2338143, b: 1, a: 1}
+    - _Color01: {r: 0.28382537, g: 0.05200988, b: 0.107747346, a: 1}
+    - _Color02: {r: 0.16009966, g: 0, b: 0.0027489034, a: 1}
     - _DissolveSpeed: {r: -0.9, g: 0, b: 0, a: 0}
     - _MainTexSpeed: {r: -0.1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
