@@ -20,7 +20,7 @@ public class QuestManager : MonoBehaviour
     [Header("Quest 1 Gates")]
     [SerializeField] private bool ruinesComplete = false;
     [SerializeField] private bool growingAreasComplete = false;
-    [SerializeField] private bool quest1completed = false;
+    [SerializeField] private bool quest1Completed = false;
 
 
     private void Start()
@@ -68,6 +68,12 @@ public class QuestManager : MonoBehaviour
         // All activation vfx's turned off
 
         // Play exiting vfx flask
+        foreach (RuineController ruine in ruines)
+        {
+            if (ruine == null) continue;
+            ruine.PlayDespawnVFX();
+            ruine.DisableActivationVFX();
+        }
 
         // Virgo Spell Playbast UI is now shown in middle of area
         // Waiting on Brennan's Implementation [Using Temp]

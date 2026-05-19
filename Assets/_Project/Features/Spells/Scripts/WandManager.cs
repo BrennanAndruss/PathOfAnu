@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using _Project.Features.Spells.ScriptableObjects;
-using UnityEditor.Searcher;
 using UnityEngine;
 
 namespace _Project.Features.Spells.Scripts

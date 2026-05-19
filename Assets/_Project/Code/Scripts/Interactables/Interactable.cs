@@ -8,7 +8,6 @@ namespace _Project.Code.Scripts.Interactables
         [Header("Interaction Settings")]
         [SerializeField] protected SpellType requiredType = SpellType.Unknown;
         [SerializeField] protected bool triggerOnlyOnce = true;
-
         protected bool IsActive = false;
         protected bool HasBeenTriggered = false;
 
@@ -24,6 +23,10 @@ namespace _Project.Code.Scripts.Interactables
                     IsActive = true;
                     HasBeenTriggered = true;
                     OnInteract(projectile);
+                }
+                else
+                {
+                    OnInteractFail(projectile);
                 }
             }
         }
@@ -41,6 +44,8 @@ namespace _Project.Code.Scripts.Interactables
 
         // Child scripts define the interaction
         protected abstract void OnInteract(Spell spell);
+
+        protected virtual void OnInteractFail(Spell spell) {}
 
         protected virtual void OnInteractExit() {}
     }
