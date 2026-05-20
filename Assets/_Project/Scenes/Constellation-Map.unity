@@ -332,6 +332,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundTrackMusic
       objectReference: {fileID: 0}
+    - target: {fileID: 4067509920080920375, guid: 90d767977026f453e98ea77774c47b3b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7554531468585335529, guid: 90d767977026f453e98ea77774c47b3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 45.883667
@@ -25754,6 +25758,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmbientWindSFX
       objectReference: {fileID: 0}
+    - target: {fileID: 5539926646964705844, guid: 34fa3ae54f297462ab97f943d0ac42da, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28759,10 +28767,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1564298772}
     m_Modifications:
-    - target: {fileID: 615260088657772938, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: cc23a05821ed03548acce7482c1dcdea, type: 2}
     - target: {fileID: 1418050612418217001, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
       propertyPath: m_RenderPostProcessing
       value: 1
@@ -28834,26 +28838,6 @@ PrefabInstance:
     - target: {fileID: 3532256878635628315, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3926959517567756798, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
-      propertyPath: m_Height
-      value: 25.623404
-      objectReference: {fileID: 0}
-    - target: {fileID: 3926959517567756798, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
-      propertyPath: m_Radius
-      value: 5.4517035
-      objectReference: {fileID: 0}
-    - target: {fileID: 3926959517567756798, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
-      propertyPath: m_Center.x
-      value: -0.00003483899
-      objectReference: {fileID: 0}
-    - target: {fileID: 3926959517567756798, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
-      propertyPath: m_Center.y
-      value: -8.297253
-      objectReference: {fileID: 0}
-    - target: {fileID: 3926959517567756798, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
-      propertyPath: m_Center.z
-      value: 4.9516954
       objectReference: {fileID: 0}
     - target: {fileID: 4134788382795187639, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -28966,34 +28950,6 @@ PrefabInstance:
     - target: {fileID: 5985894808788731696, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6017418737485719055, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: -8937476882817522960, guid: 78dc03d98ae7a3546beb2d8f3175f3c7, type: 3}
-    - target: {fileID: 6571716036589594127, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.00891
-      objectReference: {fileID: 0}
-    - target: {fileID: 6571716036589594127, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.0107607
-      objectReference: {fileID: 0}
-    - target: {fileID: 6571716036589594127, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.00891062
-      objectReference: {fileID: 0}
-    - target: {fileID: 6571716036589594127, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.005
-      objectReference: {fileID: 0}
-    - target: {fileID: 6571716036589594127, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.321
-      objectReference: {fileID: 0}
-    - target: {fileID: 6571716036589594127, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.102
       objectReference: {fileID: 0}
     - target: {fileID: 7359036532392301862, guid: 148dcde617067af438c242f3de9a44c2, type: 3}
       propertyPath: castSFX
@@ -29265,7 +29221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1564298772}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: camera-rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42262,6 +42218,8 @@ MonoBehaviour:
   - {fileID: 1836178702388447164}
   - {fileID: 6565027087717427940}
   timeToGrow: 4
+  firefliesVFX: {fileID: 0}
+  earthSigilVFX: {fileID: 0}
   minGrow: 0
   maxGrow: 0.995
 --- !u!1 &1347750967561830442
