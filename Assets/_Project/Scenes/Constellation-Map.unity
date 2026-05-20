@@ -18541,6 +18541,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 332620673}
   m_LocalEulerAnglesHint: {x: 0, y: 11.633633, z: 0}
+--- !u!1 &699704129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 699704131}
+  - component: {fileID: 699704130}
+  m_Layer: 0
+  m_Name: VirgoReplay (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &699704130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699704129}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09e02ed26c23410d970dde264cff2708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Features.Spells.Scripts.GestureReplay
+  gestureData: {fileID: 11400000, guid: b1ba3e4c4f64558429538b305413a8c0, type: 2}
+  targetSize: {x: 3, y: 3}
+  strokeWidth: 0.01
+  strokeColor: {r: 1, g: 1, b: 1, a: 1}
+  drawStatic: 0
+  totalDuration: 2
+  loopDelay: 1
+--- !u!4 &699704131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699704129}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.9999945, z: -0, w: -0.0033160665}
+  m_LocalPosition: {x: 87.86, y: 12.32, z: 81.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180.38, z: 0}
 --- !u!1 &701423368
 GameObject:
   m_ObjectHideFlags: 0
@@ -22234,7 +22285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Features.Spells.Scripts.GestureReplay
   gestureData: {fileID: 11400000, guid: 257f696445e6cfc408eedcd3c9e0ea0d, type: 2}
-  targetSize: {x: 3, y: 3}
+  targetSize: {x: 4, y: 4}
   strokeWidth: 0.01
   strokeColor: {r: 1, g: 1, b: 1, a: 1}
   drawStatic: 0
@@ -28225,7 +28276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Features.Spells.Scripts.GestureReplay
   gestureData: {fileID: 11400000, guid: b1ba3e4c4f64558429538b305413a8c0, type: 2}
-  targetSize: {x: 3, y: 3}
+  targetSize: {x: 4, y: 4}
   strokeWidth: 0.01
   strokeColor: {r: 1, g: 1, b: 1, a: 1}
   drawStatic: 0
@@ -34264,7 +34315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Features.Spells.Scripts.GestureReplay
   gestureData: {fileID: 11400000, guid: cf091fa41ac7fac41ab43ba17147e012, type: 2}
-  targetSize: {x: 3, y: 3}
+  targetSize: {x: 4, y: 4}
   strokeWidth: 0.01
   strokeColor: {r: 1, g: 1, b: 1, a: 1}
   drawStatic: 0
@@ -34502,7 +34553,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!136 &1194613335
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -34592,8 +34643,8 @@ Transform:
   m_GameObject: {fileID: 1194613334}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.8, z: 0}
-  m_LocalScale: {x: 1, y: 301.5032, z: 1}
+  m_LocalPosition: {x: 0, y: 12.79, z: 0}
+  m_LocalScale: {x: 1, y: 58.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 548048125}
@@ -44224,6 +44275,57 @@ Transform:
   - {fileID: 1039478353}
   m_Father: {fileID: 1338354494}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1546354767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1546354769}
+  - component: {fileID: 1546354768}
+  m_Layer: 0
+  m_Name: VirgoReplay (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1546354768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546354767}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09e02ed26c23410d970dde264cff2708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Features.Spells.Scripts.GestureReplay
+  gestureData: {fileID: 11400000, guid: db3ffa11abc875b4bb715541681e8b79, type: 2}
+  targetSize: {x: 3, y: 3}
+  strokeWidth: 0.01
+  strokeColor: {r: 1, g: 1, b: 1, a: 1}
+  drawStatic: 0
+  totalDuration: 2
+  loopDelay: 1
+--- !u!4 &1546354769
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546354767}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.90814316, z: 0, w: 0.41865987}
+  m_LocalPosition: {x: 74.6, y: 12.32, z: 88.76}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 589.5, z: 0}
 --- !u!1 &1549967047 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5019796626309179569, guid: c9bff31fe980e47e3b27d0ae6c9bbef7, type: 3}
@@ -51049,13 +51151,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1664675826}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09e02ed26c23410d970dde264cff2708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Features.Spells.Scripts.GestureReplay
-  gestureData: {fileID: 11400000, guid: e8697caa237d171409b72678b5ce9707, type: 2}
-  targetSize: {x: 3, y: 3}
+  gestureData: {fileID: 11400000, guid: 73cb8bae765168747a61097980b3b9c9, type: 2}
+  targetSize: {x: 2, y: 2}
   strokeWidth: 0.01
   strokeColor: {r: 1, g: 1, b: 1, a: 1}
   drawStatic: 0
@@ -51069,13 +51171,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1664675826}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.26067302, z: 0, w: 0.96542716}
+  m_LocalRotation: {x: 0, y: 0.9659259, z: -0, w: -0.25881898}
   m_LocalPosition: {x: 80.99, y: 12.32, z: 85.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 30.22, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 210, z: 0}
 --- !u!1 &1670757891
 GameObject:
   m_ObjectHideFlags: 0
@@ -52161,7 +52263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Features.Spells.Scripts.GestureReplay
   gestureData: {fileID: 11400000, guid: db3ffa11abc875b4bb715541681e8b79, type: 2}
-  targetSize: {x: 3, y: 3}
+  targetSize: {x: 4, y: 4}
   strokeWidth: 0.01
   strokeColor: {r: 1, g: 1, b: 1, a: 1}
   drawStatic: 0
@@ -54432,7 +54534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Features.Spells.Scripts.GestureReplay
   gestureData: {fileID: 11400000, guid: cf091fa41ac7fac41ab43ba17147e012, type: 2}
-  targetSize: {x: 3, y: 3}
+  targetSize: {x: 4, y: 4}
   strokeWidth: 0.01
   strokeColor: {r: 1, g: 1, b: 1, a: 1}
   drawStatic: 0
@@ -54447,7 +54549,7 @@ Transform:
   m_GameObject: {fileID: 1980543272}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 129.2, y: 13.57, z: 228.32}
+  m_LocalPosition: {x: 148.55, y: 13.57, z: 228.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -86559,9 +86661,9 @@ Transform:
   m_GameObject: {fileID: 2591182367459062868}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0018566025, y: 0.02057094, z: -0.000953698, w: 0.99978626}
-  m_LocalPosition: {x: 0.0024937333, y: 0.023812374, z: 0.06626829}
-  m_LocalScale: {x: 0.6899873, y: 0.85201484, z: 0.49123526}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0.0058, y: 0.0238, z: 0.0715}
+  m_LocalScale: {x: 2.6, y: 3.2105496, z: 1.8510654}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 233064520246127734}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -99357,7 +99459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09e02ed26c23410d970dde264cff2708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Features.Spells.Scripts.GestureReplay
-  gestureData: {fileID: 0}
+  gestureData: {fileID: 11400000, guid: 73cb8bae765168747a61097980b3b9c9, type: 2}
   targetSize: {x: 1, y: 1}
   strokeWidth: 0.01
   strokeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -129444,6 +129546,14 @@ PrefabInstance:
       propertyPath: spellLibrary.Array.size
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4199010603100858718, guid: 1a58599b2335846f298c865ee67053fd, type: 3}
+      propertyPath: 'spellLibrary.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: c60f310f766a5cb48bce84aa3394b1c3, type: 2}
+    - target: {fileID: 4199010603100858718, guid: 1a58599b2335846f298c865ee67053fd, type: 3}
+      propertyPath: 'spellLibrary.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e52cd7e0b741a074389f54db09176716, type: 2}
     - target: {fileID: 4199010603100858718, guid: 1a58599b2335846f298c865ee67053fd, type: 3}
       propertyPath: 'spellLibrary.Array.data[5]'
       value: 
@@ -198731,6 +198841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestManager
   wandManager: {fileID: 4814325977712578947}
+  gestureReplay: {fileID: 1664675827}
   questpoint: 1
   ruines:
   - {fileID: 6486369624217457360}
@@ -210837,9 +210948,9 @@ Transform:
   m_GameObject: {fileID: 2572668087434034935}
   serializedVersion: 2
   m_LocalRotation: {x: -0.016916227, y: 0.006609291, z: -0.018473977, w: 0.9996644}
-  m_LocalPosition: {x: 15.316895, y: 5.567478, z: 15.654022}
-  m_LocalScale: {x: 109.9646, y: 109.96465, z: 109.964584}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 14.17, y: 5.61, z: 15.8}
+  m_LocalScale: {x: 258.1, y: 258.1, z: 258.1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 780119446872633844}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -211364,9 +211475,9 @@ Transform:
   m_GameObject: {fileID: 3587158286848371127}
   serializedVersion: 2
   m_LocalRotation: {x: -0.016916227, y: 0.006609291, z: -0.018473977, w: 0.9996644}
-  m_LocalPosition: {x: 15.316895, y: 5.567478, z: 15.654022}
-  m_LocalScale: {x: 109.9646, y: 109.96465, z: 109.964584}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 14.26, y: 5.62, z: 16.02}
+  m_LocalScale: {x: 235.45, y: 235.45, z: 235.45}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5106982256173203596}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -217714,3 +217825,5 @@ SceneRoots:
   - {fileID: 1980543274}
   - {fileID: 1927939927}
   - {fileID: 1664675828}
+  - {fileID: 1546354769}
+  - {fileID: 699704131}
