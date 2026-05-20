@@ -20,7 +20,7 @@ public class QuestManager : MonoBehaviour
     [Header("Quest 1 Gates")]
     [SerializeField] private bool ruinesComplete = false;
     [SerializeField] private bool growingAreasComplete = false;
-    [SerializeField] private bool quest1completed = false;
+    [SerializeField] private bool quest1Completed = false;
 
 
     private void Start()
@@ -55,9 +55,7 @@ public class QuestManager : MonoBehaviour
     public void  OnRuineActivated()
     {
         if (ruinesComplete) return;
-
         ruinesActivated++;
-
         if (ruinesActivated >= ruines.Length)
         {
             CompleteRuinesStep();
@@ -67,13 +65,24 @@ public class QuestManager : MonoBehaviour
     private void CompleteRuinesStep()
     {
         ruinesComplete = true;
+        // All activation vfx's turned off
 
+        // Play exiting vfx flask
+        foreach (RuineController ruine in ruines)
+        {
+            if (ruine == null) continue;
+            ruine.PlayDespawnVFX();
+            ruine.DisableActivationVFX();
+        }
+
+        // Virgo Spell Playbast UI is now shown in middle of area
+        // Waiting on Brennan's Implementation [Using Temp]
         if (virgoUI != null)
             virgoUI.SetActive(true);
-
         SetGrowingAreasEnabled(true);
-
-        Debug.Log("Quest 1: All ruines activated. Growing areas unlocked.");
+        // Player now unlocks Virgo
+        wandManager.ActivateSpell(SpellType.Virgo);
+        Debug.Log("Quest 1: All ruines activated. Growing areas and virgo spell unlocked.");
     }
 
     public void OnGrowingAreaHealed()
@@ -95,7 +104,6 @@ public class QuestManager : MonoBehaviour
         questpoint = 2;
 
         Debug.Log("Quest 1 complete. Moving to Quest 2.");
-        wandManager.ActivateSpell(SpellType.Virgo);
     }
 
     private void SetGrowingAreasEnabled(bool enabled)

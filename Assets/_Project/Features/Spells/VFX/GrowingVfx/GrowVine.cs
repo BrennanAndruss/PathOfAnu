@@ -7,6 +7,7 @@ public class GrowVineTUT : MonoBehaviour
     public List<MeshRenderer> growVinesMeshes;
     public float timeToGrow = 5f;
 
+    [Header("VFX")]
     public GameObject firefliesVFX;
     public GameObject earthSigilVFX;
 
@@ -62,6 +63,13 @@ public class GrowVineTUT : MonoBehaviour
         {
             growVinesMaterials[i].SetFloat("Grow_", maxGrow);
         }
+
+        // Disable VFX after growth completes
+        if (firefliesVFX != null)
+            firefliesVFX.SetActive(false);
+
+        if (earthSigilVFX != null)
+            earthSigilVFX.SetActive(false);
 
         // Destroy after finishing
         Destroy(gameObject);

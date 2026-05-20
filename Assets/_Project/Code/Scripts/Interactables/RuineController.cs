@@ -12,6 +12,8 @@ public class RuineController : Interactable
     [Header("VFX / SFX")]
     [SerializeField] private GameObject correctSpellVFX;
     [SerializeField] private GameObject incorrectSpellVFX;
+    [SerializeField] private GameObject despawnVFX;
+
     [SerializeField] private AudioClip successSfx;
     [SerializeField] private AudioClip failSfx;
     [SerializeField] private bool disableAfterActivation = true;
@@ -31,22 +33,30 @@ public class RuineController : Interactable
         _audioSource = GetComponent<AudioSource>();
     }
 
-    protected override void OnInteract(Spell spell)
+    private void Start()
+    {
+        if (correctSpellVFX != null) correctSpellVFX.SetActive(false);
+        if (incorrectSpellVFX != null) incorrectSpellVFX.SetActive(false);
+        if (despawnVFX != null) despawnVFX.SetActive(false);
+    }
+
+    protected override void OnInteractFail(Spell spell)
+    {
+        if (activated) return;
+
+        PlayPlacedVfx(incorrectSpellVFX);
+        PlaySound(failSfx);
+        onFailed?.Invoke();
+    }
+
+   protected override void OnInteract(Spell spell)
     {
         if (activated) return;
         if (spell == null) return;
 
-        if (requiredType != SpellType.Unknown && spell.GetSpellType() != requiredType)
-        {
-            SpawnVfx(incorrectSpellVFX);
-            PlaySound(failSfx);
-            onFailed?.Invoke();
-            return;
-        }
-
         activated = true;
 
-        SpawnVfx(correctSpellVFX);
+        PlayPlacedVfx(correctSpellVFX);
         PlaySound(successSfx);
         onActivated?.Invoke();
 
@@ -58,11 +68,30 @@ public class RuineController : Interactable
         }
     }
 
-    private void SpawnVfx(GameObject prefab)
+    public void PlayDespawnVFX()
     {
-        if (prefab == null) return;
+        PlayPlacedVfx(despawnVFX);
+    }
 
-        Instantiate(prefab, transform.position, Quaternion.identity);
+    private void PlayPlacedVfx(GameObject vfxObject)
+    {
+        if (vfxObject == null) return;
+
+        vfxObject.SetActive(true);
+
+        ParticleSystem[] particles = vfxObject.GetComponentsInChildren<ParticleSystem>();
+
+        foreach (ParticleSystem ps in particles)
+        {
+            ps.Clear();
+            ps.Play();
+        }
+    }
+
+    public void DisableActivationVFX()
+    {
+        if (correctSpellVFX != null) correctSpellVFX.SetActive(false);
+        if (incorrectSpellVFX != null) incorrectSpellVFX.SetActive(false);
     }
 
     private void PlaySound(AudioClip clip)
