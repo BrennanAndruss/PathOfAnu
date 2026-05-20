@@ -14,10 +14,11 @@ namespace _Project.Code.Scripts.Interactables
         protected virtual void OnTriggerEnter(Collider other)
         {
             if (triggerOnlyOnce && HasBeenTriggered) return;
-            
-            // Try to get spell component and check SpellType
+
             if (other.TryGetComponent<SpellProjectile>(out var projectile))
             {
+                Debug.Log($"{gameObject.name} hit by {projectile.GetSpellType()} | Required: {requiredType}");
+
                 if (projectile.GetSpellType() == requiredType || requiredType == SpellType.Unknown)
                 {
                     IsActive = true;
@@ -26,6 +27,7 @@ namespace _Project.Code.Scripts.Interactables
                 }
                 else
                 {
+                    Debug.Log($"{gameObject.name}: WRONG SPELL");
                     OnInteractFail(projectile);
                 }
             }

@@ -69,7 +69,7 @@ public class GrowingAreaController : Interactable
         // Spawn VFX
         if (growingSpellVFX != null)
         {
-            Instantiate(growingSpellVFX, transform.position, Quaternion.identity);
+            growingSpellVFX.SetActive(true);
         }
         Debug.Log($"{gameObject.name} activated.");
     }
