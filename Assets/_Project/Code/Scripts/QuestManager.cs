@@ -1,5 +1,6 @@
 using _Project.Features.Spells.Scripts;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class QuestManager : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class QuestManager : MonoBehaviour
     [Header("Quest 1 Gates")]
     [SerializeField] private bool ruinesComplete = false;
     [SerializeField] private bool growingAreasComplete = false;
+    [FormerlySerializedAs("quest1completed")]
     [SerializeField] private bool quest1Completed = false;
 
 

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using _Project.Features.Spells.Scripts;
+using UnityEngine.Serialization;
 
 namespace _Project.Features.Spells.ScriptableObjects
 {
@@ -10,6 +11,7 @@ namespace _Project.Features.Spells.ScriptableObjects
         public int strokeCount;
         // public GesturePoint[] points;
 
+        [FormerlySerializedAs("points")]
         public List<GestureStroke> strokes = new();
         public GesturePoint[] Points
         {
