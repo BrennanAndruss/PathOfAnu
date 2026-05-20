@@ -54,7 +54,7 @@ namespace _Project.Features.Spells.Scripts.Editor
             
             GestureData asset = ScriptableObject.CreateInstance<GestureData>();
             // asset.spellType = _selectedType;
-            asset.strokes.Add(new Stroke
+            asset.strokes.Add(new GestureStroke
             {
                 points = manager.capturedProjectedPoints
             });
