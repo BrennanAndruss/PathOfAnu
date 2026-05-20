@@ -16,8 +16,10 @@ public class GrowVineTUT : MonoBehaviour
 
     private List<Material> growVinesMaterials = new List<Material>();
 
-    void Start()
+    private void OnEnable()
     {
+        growVinesMaterials.Clear();
+
         for (int i = 0; i < growVinesMeshes.Count; i++)
         {
             Material[] mats = growVinesMeshes[i].materials;
@@ -29,10 +31,20 @@ public class GrowVineTUT : MonoBehaviour
                 if (mat.HasProperty("Grow_"))
                 {
                     mat.SetFloat("Grow_", minGrow);
-                    growVinesMaterials.Add(mat);
+
+                    if (!growVinesMaterials.Contains(mat))
+                    {
+                        growVinesMaterials.Add(mat);
+                    }
                 }
             }
         }
+
+        if (firefliesVFX != null)
+            firefliesVFX.SetActive(true);
+
+        if (earthSigilVFX != null)
+            earthSigilVFX.SetActive(true);
 
         StartCoroutine(BeginGrowth());
     }
@@ -58,20 +70,17 @@ public class GrowVineTUT : MonoBehaviour
             yield return null;
         }
 
-        // Ensure final value is exact
         for (int i = 0; i < growVinesMaterials.Count; i++)
         {
             growVinesMaterials[i].SetFloat("Grow_", maxGrow);
         }
 
-        // Disable VFX after growth completes
         if (firefliesVFX != null)
             firefliesVFX.SetActive(false);
 
         if (earthSigilVFX != null)
             earthSigilVFX.SetActive(false);
 
-        // Destroy after finishing
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

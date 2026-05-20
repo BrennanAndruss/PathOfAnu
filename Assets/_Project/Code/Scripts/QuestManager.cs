@@ -12,6 +12,7 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private RuineController[] ruines;
     [SerializeField] private GrowingAreaController[] growingAreas;
     [SerializeField] private GameObject virgoUI;
+    [SerializeField] private GameObject BeaconVFX;
 
     [Header("Quest 1 Progress")]
     [SerializeField] private int ruinesActivated = 0;
@@ -102,6 +103,8 @@ public class QuestManager : MonoBehaviour
     {
         growingAreasComplete = true;
         questpoint = 2;
+        // Activate Beacon
+        BeaconVFX.SetActive(true);
 
         Debug.Log("Quest 1 complete. Moving to Quest 2.");
     }
