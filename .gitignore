@@ -27,6 +27,8 @@ MemoryCaptures/
 .utmp/
 *_BurstDebugInformation_DoNotShip/
 mono_crash.0.0.json
+/Assets/_Recovery.meta
+/Assets/_Recovery/
 
 # ========== OS Generated Files ==========
 .DS_Store

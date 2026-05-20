@@ -1,7 +1,7 @@
 namespace _Project.Features.Spells.Scripts
 {
     [System.Serializable]
-    public class Stroke
+    public class GestureStroke
     {
         public GesturePoint[] points;
     }

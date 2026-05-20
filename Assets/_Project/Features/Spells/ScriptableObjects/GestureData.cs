@@ -10,7 +10,7 @@ namespace _Project.Features.Spells.ScriptableObjects
         public int strokeCount;
         // public GesturePoint[] points;
 
-        public List<Stroke> strokes = new List<Stroke>();
+        public List<GestureStroke> strokes = new();
         public GesturePoint[] Points
         {
             get

@@ -56,6 +56,9 @@ namespace _Project.Features.Spells.Scripts
             ActivateSpell(SpellType.Earth);
             ActivateSpell(SpellType.Fire);
             ActivateSpell(SpellType.Water);
+            
+            // // TESTING...
+            // ActivateSpell(SpellType.Virgo);
         }
 
         private void OnEnable()
@@ -162,13 +165,11 @@ namespace _Project.Features.Spells.Scripts
 
         private void HandleSpellRecognized(SpellType spellType)
         {
-            if (spellType != SpellType.Unknown)
+            // Ignore spells the player has not yet unlocked
+            if (spellType != SpellType.Unknown && _isSpellActive[spellType])
             {
                 Debug.Log("[WandManager] Spell recognized");
                 SpellData spellData = GetSpell(spellType);
-                
-                // Cast spell if the player has unlocked that spell
-                if (!_isSpellActive[spellType]) return;
                 
                 _caster.PrepareSpell(spellData);
                 Debug.Log(_wandState);
@@ -178,7 +179,8 @@ namespace _Project.Features.Spells.Scripts
             else
             {
                 _wandState = WandState.Idle;
-                Debug.Log("[WandManager] Spell not recognized");
+                Debug.Log("[WandManager] Spell " + (spellType == SpellType.Unknown ?
+                    "not recognized." : "not unlocked."));
             }
         }
 
