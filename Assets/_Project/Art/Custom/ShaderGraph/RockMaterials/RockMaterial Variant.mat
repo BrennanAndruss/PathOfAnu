@@ -30,8 +30,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Blend_Bias: 0.799
-    - _Blend_Sharpness: 1.72
+    - _Blend_Bias: 1
+    - _Blend_Sharpness: 2.2
     m_Colors:
     - _Color_Grass: {r: 0.10070459, g: 0.3018868, b: 0, a: 1}
     - _Color_Rock: {r: 0.5754717, g: 0.56750226, b: 0.3936009, a: 1}
