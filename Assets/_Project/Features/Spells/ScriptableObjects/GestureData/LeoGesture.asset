@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 632e05e519ebf2b4fa633535497ac68d, type: 3}
   m_Name: LeoGesture
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Features.Spells.ScriptableObjects.GestureData
-  strokeCount: 1
+  strokeCount: 2
   strokes:
   - points:
     - Pos: {x: 0.10390548, y: 0.040819507}
