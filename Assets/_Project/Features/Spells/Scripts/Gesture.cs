@@ -15,6 +15,7 @@ namespace _Project.Features.Spells.Scripts
             this.Name = name;
             this.SpellType = SpellType.Unknown;
             this.StrokeCount = points[^1].StrokeId;
+            // this.Points = NProcessor.Normalize(points, settings);
             this.Points = QProcessor.Normalize(points, settings);
             this.Lut = QProcessor.ConstructLut(Points, settings);
         }
@@ -24,6 +25,7 @@ namespace _Project.Features.Spells.Scripts
             this.Name = spellData.spellType.ToString();
             this.SpellType = spellData.spellType;
             this.StrokeCount = spellData.gestureData.strokeCount;
+            // this.Points = NProcessor.Normalize(spellData.gestureData.Points, settings);
             this.Points = QProcessor.Normalize(spellData.gestureData.Points, settings);
             this.Lut = QProcessor.ConstructLut(Points, settings);
         }

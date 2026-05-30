@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _Project.Features.Spells.Scripts
 {
-    public static class QProcessor
+    public static class NProcessor
     {
         /// <summary>
         /// Normalizes the gesture path.
@@ -17,9 +17,10 @@ namespace _Project.Features.Spells.Scripts
             // Resample, scale, and translate points to origin
             points = Resample(points, settings.sampleResolution);
             points = Scale(points);
-            points = TranslateTo(points, Centroid(points));
+            points = RotateToZero(points);
+            points = TranslateTo(points);
 
-            return TransformCoordinatesToIntegers(points, settings.maxIntCoordinates);
+            return ToProcessedPoints(points);
         }
 
         private static GesturePoint[] Resample(GesturePoint[] points, int sampleResolution)
@@ -120,14 +121,42 @@ namespace _Project.Features.Spells.Scripts
             return points;
         }
 
+        private static GesturePoint[] RotateToZero(GesturePoint[] points)
+        {
+            // Calculate indicative angle from Centroid to Point 0
+            Vector2 centroid = Centroid(points);
+            float angle = math.atan2(points[0].Pos.y - centroid.y, points[0].Pos.x - centroid.x);
+            
+            // Rotate the entire gesture path by the negative of that angle
+            return RotateBy(points, -angle, centroid);
+        }
+
+        private static GesturePoint[] RotateBy(GesturePoint[] points, float radians, Vector2 centroid)
+        {
+            float cos = math.cos(radians);
+            float sin = math.sin(radians);
+
+            for (int i = 0; i < points.Length; i++)
+            {
+                float dx = points[i].Pos.x - centroid.x;
+                float dy = points[i].Pos.y - centroid.y;
+
+                points[i].Pos.x = dx * cos - dy * sin + centroid.x;
+                points[i].Pos.y = dx * sin + dy * cos + centroid.y;
+            }
+
+            return points;
+        }
+
         /// <summary>
         /// Translates an array of points by p.
         /// </summary>
         /// <param name="points"></param>
         /// <param name="centroid"></param>
         /// <returns></returns>
-        private static GesturePoint[] TranslateTo(GesturePoint[] points, Vector2 centroid)
+        private static GesturePoint[] TranslateTo(GesturePoint[] points)
         {
+            Vector2 centroid = Centroid(points);
             for (int i = 0; i < points.Length; i++)
             {
                 points[i].Pos -= centroid;
@@ -144,7 +173,6 @@ namespace _Project.Features.Spells.Scripts
         private static Vector2 Centroid(GesturePoint[] points)
         {
             Vector2 centroid = new Vector2();
-
             foreach (GesturePoint point in points)
             {
                 centroid += point.Pos;
@@ -154,64 +182,19 @@ namespace _Project.Features.Spells.Scripts
         }
 
         /// <summary>
-        /// Scales point coordinates to the integer domain.
+        /// Convert GesturePoints to ProcessedPoints.
         /// </summary>
         /// <param name="points"></param>
-        /// <param name="maxIntCoordinates"></param>
         /// <returns></returns>
-        private static ProcessedPoint[] TransformCoordinatesToIntegers(GesturePoint[] points, int maxIntCoordinates)
+        private static ProcessedPoint[] ToProcessedPoints(GesturePoint[] points)
         {
             ProcessedPoint[] newPoints = new ProcessedPoint[points.Length];
-            float invScale = 1f / 2f * (maxIntCoordinates - 1);
             for (int i = 0; i < points.Length; i++)
             {
-                Vector2 coords = (points[i].Pos + Vector2.one) * invScale;
-                newPoints[i] = new ProcessedPoint(points[i].Pos, points[i].StrokeId, (int)coords.x, (int)coords.y);
+                newPoints[i] = new ProcessedPoint(points[i].Pos, points[i].StrokeId);
             }
 
             return newPoints;
-        }
-
-        /// <summary>
-        /// Constructs a lookup table mapping grid points to the closest point from the gesture path.
-        /// </summary>
-        /// <param name="points"></param>
-        /// <param name="spellSettings"></param>
-        /// <returns></returns>
-        public static int[] ConstructLut(ProcessedPoint[] points, SpellSettings spellSettings)
-        {
-            int size = spellSettings.lutSize;
-            float invScale = spellSettings.InvLutScaleFactor;
-            // float lutScale = (float)size / spellSettings.maxIntCoordinates;
-            
-            int[] lut = new int[size * size];
-
-            for (int y = 0; y < size; y++)
-            {
-                for (int x = 0; x < size; x++)
-                {
-                    float minDist = float.MaxValue;
-                    int minIndex = -1;
-                    
-                    for (int t = 0; t < points.Length; t++)
-                    {
-                        float row = (points[t].IntY * invScale);
-                        float col = (points[t].IntX * invScale);
-                        // float row = (points[t].IntY / lutScale);
-                        // float col = (points[t].IntX / lutScale);
-
-                        float dist = (row - y) * (row - y) + (col - x) * (col - x);
-                        if (dist < minDist)
-                        {
-                            minDist = dist;
-                            minIndex = t;
-                        }
-                    }
-                    lut[y * size + x] = minIndex;
-                }
-            }
-
-            return lut;
         }
     }
 }
