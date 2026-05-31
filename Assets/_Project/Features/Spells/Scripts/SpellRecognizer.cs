@@ -43,6 +43,7 @@ namespace _Project.Features.Spells.Scripts
             Debug.Log("[SpellRecognizer] " + spellPoints.Length + " gesture points");
             Debug.Log("[SpellRecognizer] " + candidate.Points.Length + " processed points");
 
+            // Check against gestures with the same stroke count
             if (!_gestures.TryGetValue(candidate.StrokeCount, out var gestures))
             {
                 OnSpellRecognized?.Invoke(SpellType.Unknown);

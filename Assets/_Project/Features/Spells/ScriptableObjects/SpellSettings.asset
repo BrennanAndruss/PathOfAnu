@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b8a877514a9ba849b69302a0ed60110, type: 3}
   m_Name: SpellSettings
   m_EditorClassIdentifier: Assembly-CSharp::SpellSettings
-  sampleResolution: 32
+  sampleResolution: 128
   maxIntCoordinates: 1024
   lutSize: 16
   useEarlyAbandoning: 0

@@ -19,7 +19,7 @@ namespace _Project.Features.Spells.Scripts
     
     /// <summary>
     /// Flattened 2D representation of the player's drawing.
-    /// Used as the "Raw Input" for the $Q algorithm.
+    /// Used as the "Raw Input" for sequential recognizer algorithms.
     /// </summary>
     [System.Serializable]
     public struct GesturePoint
@@ -41,25 +41,28 @@ namespace _Project.Features.Spells.Scripts
     }
 
     /// <summary>
-    /// Normalized, resampled, and LUT-ready point used by the $Q recognizer.
+    /// Normalized, resampled point used by sequential gesture recognizers.
     /// </summary>
     public struct ProcessedPoint
     {
         public Vector2 Pos;
-        public readonly int IntX, IntY;
-
-        public ProcessedPoint(Vector2 pos, int intX, int intY)
+        public readonly int IntX, IntY; // Integer coordinates for $Q's LUT grid
+        public readonly int StrokeId; // ID for multi-stroke sequence checking
+        
+        public ProcessedPoint(Vector2 pos, int strokeId, int intX = 0, int intY = 0)
         {
             Pos = pos;
             IntX = intX;
             IntY = intY;
+            StrokeId = strokeId;
         }
 
-        public ProcessedPoint(float x, float y, int intX, int intY)
+        public ProcessedPoint(float x, float y, int strokeId, int intX = 0, int intY = 0)
         {
             Pos = new Vector2(x, y);
             IntX = intX;
             IntY = intY;
+            StrokeId = strokeId;
         }
     }
 }
