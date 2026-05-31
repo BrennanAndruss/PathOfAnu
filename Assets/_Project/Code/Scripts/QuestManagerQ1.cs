@@ -2,7 +2,7 @@ using _Project.Features.Spells.Scripts;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class QuestManager : MonoBehaviour
+public class QuestManagerQ1 : MonoBehaviour
 {
     [SerializeField] private WandManager wandManager;
     
