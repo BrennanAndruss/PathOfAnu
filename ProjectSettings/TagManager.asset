@@ -5,11 +5,17 @@ TagManager:
   serializedVersion: 3
   tags:
   - Spell
+  - Grass
+  - WaterRuine
+  - EarthRuine
+  - Flowers
+  - Tree
+  - Interactable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Terrain
   - Water
   - UI
   - Player

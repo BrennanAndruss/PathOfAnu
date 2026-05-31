@@ -38670,6 +38670,28 @@ Transform:
   - {fileID: 1039478353}
   m_Father: {fileID: 1338354494}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1541877469 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2470084539490941208, guid: 1a58599b2335846f298c865ee67053fd, type: 3}
+  m_PrefabInstance: {fileID: 4814325977712578946}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1541877476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541877469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d1352660a244fb42bb963319863a37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Code.Scripts.TerrainRespawner
+  voidThreshold: -3
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  respawnNudgeUp: 1.5
 --- !u!1 &1549967047 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5019796626309179569, guid: c9bff31fe980e47e3b27d0ae6c9bbef7, type: 3}
@@ -44426,7 +44448,7 @@ GameObject:
   - component: {fileID: 1803826379}
   - component: {fileID: 1803826378}
   - component: {fileID: 1803826377}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119843,6 +119865,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: camera-rig
       objectReference: {fileID: 0}
+    - target: {fileID: 2045822026644754083, guid: 1a58599b2335846f298c865ee67053fd, type: 3}
+      propertyPath: _layerMask.m_Bits
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 4199010603100858718, guid: 1a58599b2335846f298c865ee67053fd, type: 3}
       propertyPath: spellLibrary.Array.size
       value: 5
@@ -119906,6 +119932,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 947467699228170340, guid: 1a58599b2335846f298c865ee67053fd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1710464791}
+    - targetCorrespondingSourceObject: {fileID: 2470084539490941208, guid: 1a58599b2335846f298c865ee67053fd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1541877476}
   m_SourcePrefab: {fileID: 100100000, guid: 1a58599b2335846f298c865ee67053fd, type: 3}
 --- !u!114 &4814325977712578947 stripped
 MonoBehaviour:
@@ -207713,8 +207742,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 795767125}
-  - {fileID: 1803826379}
   - {fileID: 2023166502}
+  - {fileID: 1803826379}
   - {fileID: 4814325977712578946}
   - {fileID: 1094312393}
   - {fileID: 1995901651}
