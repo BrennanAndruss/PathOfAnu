@@ -5,15 +5,14 @@ using UnityEngine.Events;
 
 public class FireChamberController : Interactable
 {
-    public UnityEvent onCompleted;
+    public UnityEvent onCompleted = new();
 
     [Header("Fire Chamber Progress")]
     [SerializeField] private int hitsRequired = 3;
     [SerializeField] private int currentHits = 0;
 
-    [Header("Flame VFX Order")]
+    [Header("Pre-Placed Flame VFX")]
     [SerializeField] private GameObject[] flameVFXOrder;
-    [SerializeField] private Transform[] flameSpawnPoints;
 
     private bool completed = false;
 
@@ -21,6 +20,13 @@ public class FireChamberController : Interactable
     {
         requiredType = SpellType.Leo;
         triggerOnlyOnce = false;
+
+        DisableAllFlames();
+
+        if (hitsRequired != flameVFXOrder.Length)
+        {
+            Debug.LogWarning($"{gameObject.name}: Hits Required does not match Flame VFX count.");
+        }
     }
 
     protected override void OnInteract(Spell spell)
@@ -29,7 +35,7 @@ public class FireChamberController : Interactable
 
         currentHits++;
 
-        SpawnFlameForCurrentHit();
+        ActivateFlameForCurrentHit();
 
         if (currentHits >= hitsRequired)
         {
@@ -37,24 +43,27 @@ public class FireChamberController : Interactable
         }
     }
 
-    private void SpawnFlameForCurrentHit()
+    private void ActivateFlameForCurrentHit()
     {
         int index = currentHits - 1;
 
         if (index < 0 || index >= flameVFXOrder.Length) return;
 
-        GameObject prefab = flameVFXOrder[index];
-        if (prefab == null) return;
+        GameObject flame = flameVFXOrder[index];
 
-        Transform spawnPoint = null;
+        if (flame == null) return;
 
-        if (flameSpawnPoints != null && index < flameSpawnPoints.Length)
-            spawnPoint = flameSpawnPoints[index];
+        flame.SetActive(true);
+    }
 
-        Vector3 position = spawnPoint != null ? spawnPoint.position : transform.position;
-        Quaternion rotation = spawnPoint != null ? spawnPoint.rotation : transform.rotation;
+    private void DisableAllFlames()
+    {
+        foreach (GameObject flame in flameVFXOrder)
+        {
+            if (flame == null) continue;
 
-        Instantiate(prefab, position, rotation, transform);
+            flame.SetActive(false);
+        }
     }
 
     private void CompleteFireChamber()
