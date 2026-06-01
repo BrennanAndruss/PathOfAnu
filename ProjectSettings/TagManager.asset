@@ -11,6 +11,8 @@ TagManager:
   - Flowers
   - Tree
   - Interactable
+  - QDSUITooltip
+  - QDSUISharedThemeColor
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - UI
   - Player
   - Projectiles
-  - 
+  - Overlay UI
   - 
   - 
   - 
