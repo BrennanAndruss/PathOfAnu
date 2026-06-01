@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class GrowingAreaController : Interactable
 {
-    [SerializeField] private QuestManager questManager;
+    [SerializeField] private QuestManagerQ1 questManager;
     [Header("Geometry To Activate")]
     [SerializeField] private GameObject[] growingAreas;
     [SerializeField] public int state = 0; 
