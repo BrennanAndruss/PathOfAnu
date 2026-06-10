@@ -58313,7 +58313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &863916751
 Transform:
   m_ObjectHideFlags: 0
@@ -82318,6 +82318,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 603422263716694377, guid: 84d5b9faf830fd147865933a3e8ce635, type: 3}
+      propertyPath: wandManager
+      value: 
+      objectReference: {fileID: 4814325977712578947}
     - target: {fileID: 697956195622961345, guid: 84d5b9faf830fd147865933a3e8ce635, type: 3}
       propertyPath: m_Mesh
       value: 
