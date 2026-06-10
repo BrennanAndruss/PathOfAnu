@@ -7,22 +7,19 @@ public class AirChamberController : Interactable
 {
     public UnityEvent onActivated = new();
 
-    [SerializeField] private GameObject activationVFX;
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip ritualMusic;
+    [Header("Activation VFX")]
+    [SerializeField] private GameObject[] activationVFX;
 
-    private bool activated = false;
+    [Header("Ritual Audio")]
+    [SerializeField] private AudioSource ritualAudioSource;
+
+    private bool activated;
 
     private void Awake()
     {
-        requiredType = SpellType.Pisces;
         triggerOnlyOnce = true;
 
-        if (activationVFX != null)
-            activationVFX.SetActive(false);
-
-        if (audioSource == null)
-            audioSource = GetComponent<AudioSource>();
+        DisableAllVFX();
     }
 
     protected override void OnInteract(Spell spell)
@@ -31,18 +28,26 @@ public class AirChamberController : Interactable
 
         activated = true;
 
-        if (activationVFX != null)
-            activationVFX.SetActive(true);
-
-        if (audioSource != null && ritualMusic != null)
+        foreach (GameObject vfx in activationVFX)
         {
-            audioSource.clip = ritualMusic;
-            audioSource.loop = true;
-            audioSource.Play();
+            if (vfx != null)
+                vfx.SetActive(true);
         }
+
+        if (ritualAudioSource != null)
+            ritualAudioSource.Play();
 
         onActivated?.Invoke();
 
         Debug.Log($"{gameObject.name}: Air chamber activated.");
+    }
+
+    private void DisableAllVFX()
+    {
+        foreach (GameObject vfx in activationVFX)
+        {
+            if (vfx != null)
+                vfx.SetActive(false);
+        }
     }
 }

@@ -7,32 +7,20 @@ public class DragonController : Interactable
 {
     public UnityEvent onCompleted = new();
 
+    [Header("Dragon Progress")]
     [SerializeField] private int hitsRequired = 3;
-    [SerializeField] private GameObject[] hitVFXOrder;
-    [SerializeField] private GameObject completedVFX;
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip hitSound;
-    [SerializeField] private AudioClip completedSound;
+    [SerializeField] private int currentHits;
 
-    private int currentHits = 0;
-    private bool completed = false;
+    [Header("Stage VFX")]
+    [SerializeField] private GameObject[] dragonVFXOrder;
+
+    private bool completed;
 
     private void Awake()
     {
-        requiredType = SpellType.Aquarius;
         triggerOnlyOnce = false;
 
-        foreach (GameObject vfx in hitVFXOrder)
-        {
-            if (vfx != null)
-                vfx.SetActive(false);
-        }
-
-        if (completedVFX != null)
-            completedVFX.SetActive(false);
-
-        if (audioSource == null)
-            audioSource = GetComponent<AudioSource>();
+        DisableAllVFX();
     }
 
     protected override void OnInteract(Spell spell)
@@ -41,27 +29,37 @@ public class DragonController : Interactable
 
         currentHits++;
 
-        int index = currentHits - 1;
-
-        if (index >= 0 && index < hitVFXOrder.Length && hitVFXOrder[index] != null)
-            hitVFXOrder[index].SetActive(true);
-
-        if (audioSource != null && hitSound != null)
-            audioSource.PlayOneShot(hitSound);
+        ActivateCurrentVFX();
 
         if (currentHits >= hitsRequired)
-            CompleteDragonShrine();
+        {
+            CompleteDragon();
+        }
     }
 
-    private void CompleteDragonShrine()
+    private void ActivateCurrentVFX()
+    {
+        int index = currentHits - 1;
+
+        if (index < 0 || index >= dragonVFXOrder.Length)
+            return;
+
+        if (dragonVFXOrder[index] != null)
+            dragonVFXOrder[index].SetActive(true);
+    }
+
+    private void DisableAllVFX()
+    {
+        foreach (GameObject vfx in dragonVFXOrder)
+        {
+            if (vfx != null)
+                vfx.SetActive(false);
+        }
+    }
+
+    private void CompleteDragon()
     {
         completed = true;
-
-        if (completedVFX != null)
-            completedVFX.SetActive(true);
-
-        if (audioSource != null && completedSound != null)
-            audioSource.PlayOneShot(completedSound);
 
         onCompleted?.Invoke();
 

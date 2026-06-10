@@ -11,27 +11,33 @@ namespace _Project.Code.Scripts.Interactables
         protected bool IsActive = false;
         protected bool HasBeenTriggered = false;
 
-        protected virtual void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        Debug.Log($"{gameObject.name} trigger touched by {other.gameObject.name}");
+
+        if (triggerOnlyOnce && HasBeenTriggered) return;
+
+        if (other.TryGetComponent<SpellProjectile>(out var projectile))
         {
-            if (triggerOnlyOnce && HasBeenTriggered) return;
+            Debug.Log($"{gameObject.name} hit by {projectile.GetSpellType()} | Required: {requiredType}");
 
-            if (other.TryGetComponent<SpellProjectile>(out var projectile))
+            if (projectile.GetSpellType() == requiredType || requiredType == SpellType.Unknown)
             {
-                Debug.Log($"{gameObject.name} hit by {projectile.GetSpellType()} | Required: {requiredType}");
-
-                if (projectile.GetSpellType() == requiredType || requiredType == SpellType.Unknown)
-                {
-                    IsActive = true;
-                    HasBeenTriggered = true;
-                    OnInteract(projectile);
-                }
-                else
-                {
-                    Debug.Log($"{gameObject.name}: WRONG SPELL");
-                    OnInteractFail(projectile);
-                }
+                IsActive = true;
+                HasBeenTriggered = true;
+                OnInteract(projectile);
+            }
+            else
+            {
+                Debug.Log($"{gameObject.name}: WRONG SPELL");
+                OnInteractFail(projectile);
             }
         }
+        else
+        {
+            Debug.LogWarning($"{other.gameObject.name} touched {gameObject.name}, but has NO SpellProjectile component.");
+        }
+    }
 
         protected virtual void OnTriggerExit(Collider other)
         {

@@ -3,46 +3,58 @@ using UnityEngine;
 
 public class QuestManagerQ3 : MonoBehaviour
 {
-    [SerializeField] private WandManager wandManager;
-
     [Header("Quest 3 Objects")]
     [SerializeField] private WaterBowlController[] waterBowls;
     [SerializeField] private WindChimeController[] windChimes;
     [SerializeField] private DragonController[] dragonShrines;
     [SerializeField] private AirChamberController[] airChambers;
 
-    [Header("Spell Unlocks")]
+    [Header("Spell Unlock UI")]
+    [SerializeField] private WandManager wandManager;
     [SerializeField] private GameObject aquariusUI;
     [SerializeField] private GameObject piscesUI;
+
+    [Header("Optional Spell Spawn Objects")]
     [SerializeField] private GameObject aquariusSpawnObject;
     [SerializeField] private GameObject piscesSpawnObject;
 
     [Header("Quest Complete")]
     [SerializeField] private GameObject finalBeaconVFX;
 
-    private int waterBowlsActivated = 0;
-    private int windChimesActivated = 0;
-    private int dragonShrinesCompleted = 0;
-    private int airChambersActivated = 0;
+    private int waterBowlsActivated;
+    private int windChimesActivated;
+    private int dragonShrinesCompleted;
+    private int airChambersActivated;
 
-    private bool waterStepComplete = false;
-    private bool windStepComplete = false;
-    private bool zodiacSpellsUnlocked = false;
-    private bool dragonStepComplete = false;
-    private bool airChamberStepComplete = false;
-    private bool questComplete = false;
+    private bool waterStepComplete;
+    private bool windStepComplete;
+    private bool zodiacSpellsUnlocked;
+    private bool dragonStepComplete;
+    private bool airChamberStepComplete;
+    private bool questComplete;
 
     private void Start()
     {
-        if (aquariusUI != null) aquariusUI.SetActive(false);
-        if (piscesUI != null) piscesUI.SetActive(false);
-        if (aquariusSpawnObject != null) aquariusSpawnObject.SetActive(false);
-        if (piscesSpawnObject != null) piscesSpawnObject.SetActive(false);
-        if (finalBeaconVFX != null) finalBeaconVFX.SetActive(false);
+        InitializeQuestObjects();
+        RegisterEvents();
+
+        Debug.Log("Quest 3 started. Activate 3 water bowls and 3 wind chimes.");
+    }
+
+    private void InitializeQuestObjects()
+    {
+        SetObjectActive(aquariusUI, false);
+        SetObjectActive(piscesUI, false);
+        SetObjectActive(aquariusSpawnObject, false);
+        SetObjectActive(piscesSpawnObject, false);
+        SetObjectActive(finalBeaconVFX, false);
 
         SetDragonShrinesEnabled(false);
         SetAirChambersEnabled(false);
+    }
 
+    private void RegisterEvents()
+    {
         foreach (WaterBowlController bowl in waterBowls)
         {
             if (bowl != null)
@@ -74,9 +86,12 @@ public class QuestManagerQ3 : MonoBehaviour
 
         waterBowlsActivated++;
 
+        Debug.Log($"Quest 3: Water bowls activated {waterBowlsActivated}/{waterBowls.Length}");
+
         if (waterBowlsActivated >= waterBowls.Length)
         {
             waterStepComplete = true;
+            Debug.Log("Quest 3: Water bowl step complete.");
             TryUnlockZodiacSpells();
         }
     }
@@ -87,9 +102,12 @@ public class QuestManagerQ3 : MonoBehaviour
 
         windChimesActivated++;
 
+        Debug.Log($"Quest 3: Wind chimes activated {windChimesActivated}/{windChimes.Length}");
+
         if (windChimesActivated >= windChimes.Length)
         {
             windStepComplete = true;
+            Debug.Log("Quest 3: Wind chime step complete.");
             TryUnlockZodiacSpells();
         }
     }
@@ -98,24 +116,25 @@ public class QuestManagerQ3 : MonoBehaviour
     {
         if (zodiacSpellsUnlocked) return;
         if (!waterStepComplete || !windStepComplete) return;
-
-        zodiacSpellsUnlocked = true;
-
-        if (aquariusUI != null) aquariusUI.SetActive(true);
-        if (piscesUI != null) piscesUI.SetActive(true);
-        if (aquariusSpawnObject != null) aquariusSpawnObject.SetActive(true);
-        if (piscesSpawnObject != null) piscesSpawnObject.SetActive(true);
-
+        // Unlock spells
         if (wandManager != null)
         {
             wandManager.ActivateSpell(SpellType.Aquarius);
             wandManager.ActivateSpell(SpellType.Pisces);
         }
+        // Show UI and activate other regions
+        zodiacSpellsUnlocked = true;
+
+        SetObjectActive(aquariusUI, true);
+        SetObjectActive(piscesUI, true);
+
+        SetObjectActive(aquariusSpawnObject, true);
+        SetObjectActive(piscesSpawnObject, true);
 
         SetDragonShrinesEnabled(true);
         SetAirChambersEnabled(true);
 
-        Debug.Log("Quest 3: Aquarius and Pisces unlocked.");
+        Debug.Log("Quest 3: Aquarius and Pisces are now available.");
     }
 
     private void OnDragonShrineCompleted()
@@ -125,9 +144,12 @@ public class QuestManagerQ3 : MonoBehaviour
 
         dragonShrinesCompleted++;
 
+        Debug.Log($"Quest 3: Dragon shrines completed {dragonShrinesCompleted}/{dragonShrines.Length}");
+
         if (dragonShrinesCompleted >= dragonShrines.Length)
         {
             dragonStepComplete = true;
+            Debug.Log("Quest 3: Dragon shrine step complete.");
             TryCompleteQuest();
         }
     }
@@ -139,9 +161,12 @@ public class QuestManagerQ3 : MonoBehaviour
 
         airChambersActivated++;
 
+        Debug.Log($"Quest 3: Air chambers activated {airChambersActivated}/{airChambers.Length}");
+
         if (airChambersActivated >= airChambers.Length)
         {
             airChamberStepComplete = true;
+            Debug.Log("Quest 3: Air chamber step complete.");
             TryCompleteQuest();
         }
     }
@@ -153,8 +178,7 @@ public class QuestManagerQ3 : MonoBehaviour
 
         questComplete = true;
 
-        if (finalBeaconVFX != null)
-            finalBeaconVFX.SetActive(true);
+        SetObjectActive(finalBeaconVFX, true);
 
         Debug.Log("Quest 3 complete. Final beacon activated.");
     }
@@ -166,6 +190,7 @@ public class QuestManagerQ3 : MonoBehaviour
             if (dragon == null) continue;
 
             Collider col = dragon.GetComponent<Collider>();
+
             if (col != null)
                 col.enabled = enabled;
         }
@@ -178,8 +203,15 @@ public class QuestManagerQ3 : MonoBehaviour
             if (chamber == null) continue;
 
             Collider col = chamber.GetComponent<Collider>();
+
             if (col != null)
                 col.enabled = enabled;
         }
+    }
+
+    private void SetObjectActive(GameObject target, bool active)
+    {
+        if (target != null)
+            target.SetActive(active);
     }
 }
