@@ -33534,8 +33534,8 @@ Transform:
   - {fileID: 1532959011}
   - {fileID: 1045847298}
   - {fileID: 1837704488}
-  - {fileID: 371917651}
   - {fileID: 903564938}
+  - {fileID: 371917651}
   - {fileID: 2028231177}
   - {fileID: 1399787717}
   m_Father: {fileID: 0}
@@ -58040,7 +58040,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &863916751
 Transform:
   m_ObjectHideFlags: 0
