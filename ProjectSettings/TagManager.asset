@@ -13,6 +13,8 @@ TagManager:
   - Interactable
   - QDSUITooltip
   - QDSUISharedThemeColor
+  - Dragon
+  - Bowl-Water
   layers:
   - Default
   - TransparentFX
